@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gruppchat</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#0f0f12;--surface:#1a1a22;--surface2:#242430;--border:#30303c;--text:#f2f2f6;--muted:#9999aa;--primary:#6c5ce7;--success:#35d07f;--danger:#ff6b6b}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+button,input{font:inherit}button{cursor:pointer}.screen{display:none;width:100%;height:100%}.screen.active{display:flex}
+#join-screen{align-items:center;justify-content:center;padding:20px}.card{width:min(440px,100%);background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:0 20px 60px #0006}
+.logo{text-align:center;margin-bottom:24px}.logo-icon{font-size:42px}.logo h1{margin:8px 0 4px}.sub,.hint{color:var(--muted);font-size:14px}
+label{display:block;font-size:13px;margin-bottom:7px;color:#ccc}.group{margin-bottom:16px}
+input{width:100%;background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:12px 14px;outline:0}input:focus{border-color:var(--primary)}
+.tabs{display:flex;gap:6px;margin:20px 0 16px}.tab{flex:1;border:0;background:var(--surface2);color:var(--muted);padding:10px;border-radius:9px}.tab.active{background:var(--primary);color:#fff}.tab-content{display:none}.tab-content.active{display:block}
+.btn{border:0;border-radius:10px;padding:11px 15px;color:#fff;background:var(--primary);font-weight:600}.btn.secondary{background:var(--surface2);border:1px solid var(--border)}.btn.full{width:100%}
+.saved-chats{margin-top:16px;display:flex;flex-direction:column;gap:7px}.saved-chat{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:8px 10px}.saved-chat .remove{border:0;background:transparent;color:#ff8585;font-size:18px;cursor:pointer}.error{margin-top:14px;padding:10px;border-radius:9px;background:#ff6b6b18;color:#ff8585;border:1px solid #ff6b6b44;font-size:13px}.info{margin-top:18px;padding:12px;border-radius:10px;background:var(--primary)12;color:#cfc9ff;font-size:13px}
+#chat-screen{flex-direction:column}.header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+.header-left,.header-right{display:flex;align-items:center;gap:10px}.chat-actions{display:flex;gap:8px;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border)}.chat-actions .btn{padding:8px 12px}.btn.danger{background:#6b2a32;border:1px solid #8e3943}.header h2{font-size:16px;margin:0}.online-count{font-size:12px;color:var(--muted)}.icon{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:#fff}
+#room-tabs{display:flex;gap:6px;overflow:auto;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border);flex-shrink:0}.room-tab{white-space:nowrap;border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 12px;border-radius:9px}.room-tab.active{color:#fff;background:var(--primary);border-color:var(--primary)}
+.layout{display:flex;flex:1;min-height:0}.sidebar{width:210px;border-right:1px solid var(--border);background:var(--surface);padding:14px;overflow:auto}.sidebar h3{margin:0 0 12px;font-size:13px}.user{padding:8px 4px;font-size:14px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:7px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}.messages{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:9px}.message{max-width:min(680px,82%);align-self:flex-start}.message.own{align-self:flex-end}.meta{font-size:11px;color:var(--muted);margin:0 5px 4px}.bubble{background:var(--surface2);border-radius:14px;padding:10px 13px;line-height:1.45;overflow-wrap:anywhere}.own .bubble{background:var(--primary)}.system{align-self:center;color:var(--muted);font-size:12px}.image{max-width:100%;max-height:360px;border-radius:10px;display:block;margin-top:7px;cursor:pointer}
+.form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--border);background:var(--surface)}.form input{border-radius:22px}.send{width:46px;border-radius:50%;padding:0}.attach{width:46px;padding:0;background:var(--surface2);border:1px solid var(--border)}#file{display:none}
+@media(max-width:700px){.sidebar{display:none}.message{max-width:90%}}
+:fullscreen #chat-screen{height:100vh}
+<style>
+.tools{display:flex;gap:6px;padding:0 16px 6px;background:var(--surface);position:relative}.tool{border:0;background:var(--surface-2);color:var(--text);border-radius:10px;padding:7px 10px;cursor:pointer}.emoji-panel{position:absolute;bottom:42px;left:16px;max-width:330px;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-size:22px;line-height:1.8;z-index:20;box-shadow:var(--shadow)}.emoji-head{display:flex;align-items:center;justify-content:space-between;font-size:14px;margin-bottom:6px}.emoji-head button{border:0;background:transparent;color:var(--muted);font-size:16px;padding:2px 6px;border-radius:6px}.emoji-head button:hover{background:var(--surface2);color:var(--text)}#emoji-list{display:flex;flex-wrap:wrap;gap:2px}#emoji-list button{border:0;background:transparent;color:var(--text);font-size:23px;line-height:1;padding:5px;border-radius:7px;cursor:pointer}#emoji-list button:hover{background:var(--surface2)}.feature-fab{position:fixed;right:18px;bottom:82px;width:48px;height:48px;border-radius:50%;border:0;background:var(--primary);color:#fff;font-size:28px;cursor:pointer;z-index:30;box-shadow:var(--shadow)}.feature-menu{position:fixed;right:18px;bottom:138px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;z-index:31;box-shadow:var(--shadow)}.feature-menu button{display:block;width:190px;text-align:left;padding:10px;border:0;background:transparent;color:var(--text);border-radius:8px;cursor:pointer}.feature-menu button:hover{background:var(--surface-2)}
+</style></head>
+</head>
+<body>
+<section id="join-screen" class="screen active">
+<div class="card">
+<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div></div>
+<div class="group"><label>Ditt namn</label><input id="username" maxlength="20" placeholder="Skriv ditt namn..." autocomplete="off"></div>
+<div class="tabs"><button class="tab active" data-tab="join">Gå med</button><button class="tab" data-tab="create">Skapa rum</button></div>
+<div id="join-tab" class="tab-content active">
+<div class="group"><label>Rumskod</label><input id="room-code" maxlength="8" placeholder="T.ex. ABC123" style="text-transform:uppercase"></div>
+<button id="join-btn" class="btn full">Gå med i chatten</button>
+</div>
+<div id="create-tab" class="tab-content">
+<div class="group"><label>Gruppens namn</label><input id="room-name" maxlength="40" placeholder="T.ex. Klassen"></div>
+<button id="create-btn" class="btn full">Skapa nytt rum</button>
+</div>
+<div id="saved-chats" class="saved-chats"></div><div id="error" class="error" hidden></div>
+<div class="info">💡 Chatten sparas online. Ingen deltagares dator behöver vara värd.</div>
+</div>
+</section>
+
+<section id="chat-screen" class="screen">
+<header class="header">
+<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div>
+<div class="header-right"><button id="copy" class="btn secondary">Kod <b id="code">------</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
+</header>
+<nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
+<div class="layout">
+<aside class="sidebar"><h3>Online</h3><div id="users"></div></aside>
+<main class="main"><div id="messages" class="messages"></div>
+<div class="tools"><button type="button" id="emoji-btn" class="tool" title="Emojis">😊</button><button type="button" id="attach2" class="tool" title="Skicka bild">🖼️</button><div id="emoji-panel" class="emoji-panel" hidden>
+  <div class="emoji-head"><b>Emojis</b><button type="button" id="emoji-close" title="Stäng">✕</button></div>
+  <div id="emoji-list"></div>
+</div></div><form id="form" class="form"><input id="input" maxlength="1000" placeholder="Skriv ett meddelande..." autocomplete="off"><input id="file" type="file" accept="image/*" hidden><button type="button" id="attach" class="btn attach" title="Skicka bild">📷</button><button class="btn send" title="Skicka">➤</button></form><button id="feature-btn" class="feature-fab" type="button" title="Funktioner">＋</button><div id="feature-menu" class="feature-menu" hidden><button id="feature-image" type="button">🖼️ Skicka bild</button><button id="feature-notify" type="button">🔔 Aktivera notiser</button><button id="feature-fullscreen" type="button">⛶ Fullskärm</button></div>
+</main></div>
+</section>
+
+<script>
+const SUPABASE_URL='https://diiaggusdqzdbgcougtz.supabase.co';
+const SUPABASE_KEY='sb_publishable_kq-z4SYC__vGGKF8wJW9XA__8Nyy1U2';
+const db=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+let username=localStorage.getItem('gc_username')||'';
+let rooms=JSON.parse(localStorage.getItem('gc_rooms')||'[]');
+let current=null, channel=null, presenceTimer=null;
+const clientId=localStorage.getItem('gc_client_id')||crypto.randomUUID();
+localStorage.setItem('gc_client_id',clientId);
+
+const $=id=>document.getElementById(id);
+$('username').value=username;
+
+function err(t){$('error').textContent=t;$('error').hidden=false}
+function clearErr(){$('error').hidden=true}
+function esc(s){const d=document.createElement('div');d.textContent=s??'';return d.innerHTML}
+
+function fmt(t){return new Date(t).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})}
+
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+ b.classList.add('active');$(b.dataset.tab+'-tab').classList.add('active');clearErr();
+});
+
+function renderSavedChats(){
+ const box=$('saved-chats'); if(!box)return;
+ box.innerHTML='';
+ if(!rooms.length)return;
+ const h=document.createElement('div'); h.className='hint'; h.textContent='Dina sparade grupper'; box.appendChild(h);
+ rooms.forEach(r=>{
+  const row=document.createElement('div'); row.className='saved-chat';
+  const b=document.createElement('button'); b.type='button'; b.textContent=(r.name||'Grupp')+' · '+r.code;
+  b.style.cssText='flex:1;text-align:left;border:0;background:transparent;color:var(--text);cursor:pointer';
+  b.onclick=()=>openRoom(r).catch(e=>err(e.message));
+  const x=document.createElement('button'); x.type='button'; x.className='remove'; x.textContent='×'; x.title='Lämna grupp';
+  x.onclick=()=>leaveRoom(r.id);
+  row.append(b,x); box.appendChild(row);
+ });
+}
+function saveRooms(){localStorage.setItem('gc_rooms',JSON.stringify(rooms));renderSavedChats()}
+function addRoom(r){if(!rooms.some(x=>x.id===r.id)){rooms.push(r);saveRooms()}}
+
+async function leaveRoom(roomId){
+ const room=rooms.find(r=>r.id===roomId); if(!room)return;
+ if(!confirm('Lämna gruppen "'+(room.name||room.code)+'"?'))return;
+ if(current&&current.id===roomId){if(channel)await db.removeChannel(channel);channel=null;current=null;}
+ rooms=rooms.filter(r=>r.id!==roomId); saveRooms(); renderRoomTabs();
+ $('chat-screen').classList.remove('active'); $('join-screen').classList.add('active');
+}
+async function showAllChats(){
+ if(channel)await db.removeChannel(channel);
+ channel=null; current=null;
+ $('chat-screen').classList.remove('active'); $('join-screen').classList.add('active');
+ clearErr(); renderSavedChats();
+}
+async function findRoom(code){
+ const {data,error}=await db.from('rooms').select('*').eq('code',code).maybeSingle();
+ if(error) throw error;if(!data) throw new Error('Rummet hittades inte.');
+ return data;
+}
+async function openRoom(room){
+ current=room;addRoom(room);renderRoomTabs();
+ $('join-screen').classList.remove('active');$('chat-screen').classList.add('active');
+ $('title').textContent=room.name||'Grupp';$('code').textContent=room.code;$('input').focus();
+ if(channel) await db.removeChannel(channel);
+ channel=db.channel('room-'+room.id,{config:{presence:{key:clientId}}});
+ channel.on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{renderMessage(p.new);if(p.new.username!==username&&document.hidden&&'Notification' in window&&Notification.permission==='granted'&&localStorage.getItem('gc_notifications')==='on')new Notification(p.new.username||'Nytt meddelande',{body:p.new.image?'🖼️ Bild':(p.new.text||'Nytt meddelande')});});
+ channel.on('presence',{event:'sync'},updatePresence);
+ channel.on('presence',{event:'join'},updatePresence);
+ channel.on('presence',{event:'leave'},updatePresence);
+ const {error}=await channel.subscribe(async status=>{if(status==='SUBSCRIBED'){await channel.track({username,client_id:clientId})}});
+ if(error) throw error;
+ await loadMessages();await updatePresence();
+}
+async function loadMessages(){
+ const {data,error}=await db.from('messages').select('*').eq('room_id',current.id).order('created_at',{ascending:true});
+ if(error) throw error;$('messages').innerHTML='';(data||[]).forEach(renderMessage);scroll();
+}
+function renderMessage(m){
+ if(m._rendered)return;m._rendered=true;
+ const div=document.createElement('div');div.className='message '+(m.username===username?'own':'');
+ const text=m.text?`<div>${esc(m.text)}</div>`:'';
+ const img=m.image?`<img class="image" src="${esc(m.image)}" onclick="window.open(this.src,'_blank')">`:'';
+ div.innerHTML=`<div class="meta">${m.username===username?'':esc(m.username)+' · '}${fmt(m.created_at)}</div><div class="bubble">${text}${img}</div>`;
+ $('messages').appendChild(div);scroll();
+}
+function scroll(){$('messages').scrollTop=$('messages').scrollHeight}
+function renderRoomTabs(){
+ $('room-tabs').innerHTML='';
+ rooms.forEach(r=>{const b=document.createElement('button');b.className='room-tab '+(current&&r.id===current.id?'active':'');b.textContent=r.name||r.code;b.onclick=()=>openRoom(r).catch(e=>err(e.message));$('room-tabs').appendChild(b)})
+}
+async function updatePresence(){
+ if(!channel)return;
+ const state=channel.presenceState();const people=[];
+ Object.values(state).flat().forEach(p=>{if(p.username&&!people.some(x=>x.username===p.username))people.push(p)});
+ $('users').innerHTML=people.map(p=>`<div class="user"><span class="dot"></span>${esc(p.username)}${p.client_id===clientId?' (du)':''}</div>`).join('');
+ $('count').textContent=people.length+' online';
+}
+
+$('create-btn').onclick=async()=>{
+ try{
+  clearErr();username=$('username').value.trim();if(!username)throw new Error('Skriv in ditt namn.');
+  const name=$('room-name').value.trim()||'Ny grupp';localStorage.setItem('gc_username',username);
+  let code,room,tries=0;
+  while(!room&&tries++<10){code=Math.random().toString(36).slice(2,8).toUpperCase();const r=await db.from('rooms').select('id').eq('code',code).maybeSingle();if(!r.data)room=(await db.from('rooms').insert({code,name}).select().single()).data}
+  if(!room)throw new Error('Kunde inte skapa rum. Försök igen.');
+  await openRoom(room);
+ }catch(e){console.error(e);err(e.message||'Kunde inte skapa rummet.')}
+};
+$('join-btn').onclick=async()=>{
+ try{clearErr();username=$('username').value.trim();const code=$('room-code').value.trim().toUpperCase();if(!username)throw new Error('Skriv in ditt namn.');if(!code)throw new Error('Skriv in rumskoden.');localStorage.setItem('gc_username',username);await openRoom(await findRoom(code))}
+ catch(e){console.error(e);err(e.message||'Kunde inte gå med.')}
+};
+$('form').onsubmit=async e=>{
+ e.preventDefault();if(!current)return;const text=$('input').value.trim();if(!text)return;
+ const {error}=await db.from('messages').insert({room_id:current.id,username,text});
+ if(error)err(error.message);else $('input').value='';
+};
+$('attach').onclick=()=>$('file').click();
+$('file').onchange=async()=>{
+ const f=$('file').files[0];if(!f||!current)return;if(f.size>8*1024*1024){err('Bilden är för stor. Max 8 MB.');return}
+ try{
+  const path=current.id+'/'+crypto.randomUUID()+'-'+f.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+  const up=await db.storage.from('chat-images').upload(path,f,{contentType:f.type});
+  if(up.error){if(up.error.message==='Bucket not found')throw new Error('Bildlagringen saknas i Supabase. Skapa en public bucket som heter chat-images.');throw up.error;}
+  const pub=db.storage.from('chat-images').getPublicUrl(path).data.publicUrl;
+  const {error}=await db.from('messages').insert({room_id:current.id,username,image:pub});
+  if(error)throw error;
+ }catch(e){console.error(e);err('Kunde inte skicka bilden: '+e.message)}finally{$('file').value=''}
+};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(current.code);$('copy').textContent='Kopierad!';setTimeout(()=>$('copy').innerHTML='Kod <b id="code">'+current.code+'</b>',1200)}catch{}};
+$('fullscreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch{}};
+$('back').onclick=async()=>{if(channel)await db.removeChannel(channel);channel=null;current=null;$('chat-screen').classList.remove('active');$('join-screen').classList.add('active');renderRoomTabs()};
+$('all-chats').onclick=showAllChats;
+$('back').onclick=showAllChats;
+$('leave-group').onclick=()=>{if(current)leaveRoom(current.id)};
+
+window.addEventListener('beforeunload',()=>{if(channel)db.removeChannel(channel)});
+renderSavedChats(); if(rooms.length){renderRoomTabs()}
+
+
+const emojiList=['😀','😃','😄','😁','😂','🙂','😉','😊','😎','😍','🥰','😭','😡','😱','🤔','👍','👎','❤️','💯','🔥','🎉','👋','🙌','🤣','😴'];
+$('emoji-list').innerHTML=emojiList.map(e=>`<button type="button" title="${e}">${e}</button>`).join('');
+$('emoji-btn').onclick=()=>{$('emoji-panel').hidden=!$('emoji-panel').hidden};
+$('emoji-close').onclick=()=>{$('emoji-panel').hidden=true};
+$('emoji-list').onclick=e=>{if(e.target.tagName==='BUTTON'){$('input').value+=e.target.textContent;$('input').focus();}};
+$('attach').onclick=()=>$('file').click();
+$('attach2').onclick=()=>$('file').click();
+$('feature-btn').onclick=()=>{$('feature-menu').hidden=!$('feature-menu').hidden};
+$('feature-image').onclick=()=>$('file').click();
+
+async function sendImage(file){
+ if(!current||!file)return;
+ if(file.size>8*1024*1024)return alert('Bilden är för stor. Max 8 MB.');
+ const path=current.id+'/'+Date.now()+'_'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+ const up=await db.storage.from('chat-images').upload(path,file,{contentType:file.type});
+ if(up.error)return alert('Kunde inte ladda upp bilden: '+up.error.message);
+ const url=db.storage.from('chat-images').getPublicUrl(path).data.publicUrl;
+ const ins=await db.from('messages').insert({room_id:current.id,username,text:'',image:url});
+ if(ins.error)alert('Kunde inte skicka bilden: '+ins.error.message);
+}
+// Bildhantering sköts av huvudfunktionen ovan.
+
+$('feature-notify').onclick=async()=>{
+ if(!('Notification' in window))return alert('Den här webbläsaren stöder inte notiser.');
+ const p=await Notification.requestPermission();
+ if(p==='granted'){localStorage.setItem('gc_notifications','on');new Notification('Gruppchat',{body:'Notiser är aktiverade! 🔔'});}
+};
+$('feature-fullscreen').onclick=async()=>{try{await document.documentElement.requestFullscreen()}catch(e){}};
+</script>
+</body>
+</html>
