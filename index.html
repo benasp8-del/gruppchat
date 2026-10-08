@@ -313,7 +313,7 @@ async function saveCustomizeGroup(){
  try{
   if(file){if(file.size>8*1024*1024)throw new Error('Bakgrundsbilden är för stor. Max 8 MB.');const path=current.id+'/group-background-'+crypto.randomUUID()+'-'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const up=await db.storage.from('chat-images').upload(path,file,{contentType:file.type,upsert:false});if(up.error)throw up.error;background=db.storage.from('chat-images').getPublicUrl(path).data.publicUrl;await new Promise((resolve,reject)=>{const test=new Image();test.onload=resolve;test.onerror=()=>reject(new Error('Bakgrundsbilden laddades upp men kan inte läsas från Supabase. Kontrollera att bucket chat-images är PUBLIC.'));test.src=background+'?check='+Date.now();});}
   const {data,error}=await db.from('rooms').update({name,icon,accent_color:color,description,background_image:background}).eq('id',current.id).eq('owner_username',username).select().single();
-  if(error)throw error;current=data;const i=rooms.findIndex(r=>r.id===current.id);if(i>=0){rooms[i]=current;saveRooms();}applyGroupAppearance(current);renderRoomTabs();renderGroupInfoOwnerTools();$('info-name').textContent=current.name||'-';$('info-description').textContent=current.description||'Ingen beskrivning.';$('group-customize-modal').hidden=true;
+  if(error)throw error;current=data;const i=rooms.findIndex(r=>r.id===current.id);if(i>=0){rooms[i]=current;saveRooms();}renderSavedChats();renderRoomTabs();applyGroupAppearance(current);renderGroupInfoOwnerTools();$('info-name').textContent=current.name||'-';$('info-description').textContent=current.description||'Ingen beskrivning.';$('group-customize-modal').hidden=true;
  }catch(e){alert('Kunde inte spara gruppinställningarna: '+(e.message||e));}
 }
 $('customize-color')?.addEventListener('input',e=>{$('customize-color-value').textContent=e.target.value;$('customize-icon-preview').style.background=e.target.value});
@@ -586,11 +586,12 @@ function addRoom(r){if(!rooms.some(x=>x.id===r.id)){rooms.push(r);saveRooms();st
 async function leaveRoom(roomId){
  const room=rooms.find(r=>r.id===roomId); if(!room)return;
  if(!confirm('Lämna gruppen "'+(room.name||room.code)+'"?'))return;
- if(current&&current.id===roomId){if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}if(channel)await db.removeChannel(channel);channel=null;current=null;clearModerationUI();}
+ if(current&&current.id===roomId){if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}if(channel)await db.removeChannel(channel);channel=null;current=null;clearModerationUI();}
  rooms=rooms.filter(r=>r.id!==roomId); saveRooms(); renderRoomTabs();
  $('chat-screen').classList.remove('active'); $('join-screen').classList.add('active');
 }
 async function showAllChats(){
+ if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}
  if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}
  if(channel)await db.removeChannel(channel);
  channel=null; current=null;
@@ -620,9 +621,39 @@ async function startNotificationChannels(){
   notifyChannels[room.id]=ch;
  }
 }
+let roomSettingsChannel=null;
+async function watchRoomSettings(){
+ if(!current)return;
+ if(roomSettingsChannel)await db.removeChannel(roomSettingsChannel).catch(()=>{});
+ roomSettingsChannel=db.channel('room-settings-'+current.id);
+ roomSettingsChannel.on('postgres_changes',{
+   event:'UPDATE',schema:'public',table:'rooms',filter:'id=eq.'+current.id
+ },p=>{
+   const updated=p.new;
+   if(!updated||!current||updated.id!==current.id)return;
+   current=updated;
+   const i=rooms.findIndex(r=>r.id===updated.id);
+   if(i>=0){rooms[i]=updated;saveRooms();}
+   renderSavedChats();
+   renderRoomTabs();
+   applyGroupAppearance(updated);
+   renderGroupInfoOwnerTools();
+   if($('info-name'))$('info-name').textContent=updated.name||'-';
+   if($('info-description'))$('info-description').textContent=updated.description||'Ingen beskrivning.';
+   if($('group-icon'))$('group-icon').textContent=updated.icon||'💬';
+   if($('title'))$('title').textContent=updated.name||'Grupp';
+ });
+ await roomSettingsChannel.subscribe();
+}
+
 async function openRoom(room){
+ const {data:latestRoom,error:latestRoomError}=await db.from('rooms').select('*').eq('id',room.id).maybeSingle();
+ if(latestRoomError)throw latestRoomError;
+ if(!latestRoom)throw new Error('Gruppen finns inte längre.');
+ room=latestRoom;
  const mod=await checkModeration(room.id,username);if(mod?.blocked)throw new Error(mod.reason);
- current=room;clearUnread(room.id);addRoom(room);renderRoomTabs();applyGroupAppearance(room);
+ current=room;
+ await watchRoomSettings();clearUnread(room.id);addRoom(room);renderRoomTabs();applyGroupAppearance(room);
  await startNotificationChannels();
  $('join-screen').classList.remove('active');$('chat-screen').classList.add('active');
  $('title').textContent=room.name||'Grupp';$('code').textContent='••••••';$('copy').classList.add('code-hidden');$('input').focus();
@@ -688,8 +719,7 @@ function renderMessage(m){
  const color=userColor(m.username||'');
  const isSchedule=activeSection==='schedule';
  if(isSchedule)document.querySelector('.schedule-empty')?.remove();
- const div=document.createElement('div');
- div.className='message '+(m.username===username?'own':'')+(isSchedule?' schedule-card':'');
+ const div=document.createElement('div'); div.className='message '+(m.username===username?'own':'')+(isSchedule?' schedule-card':'');
  div.dataset.messageId=m.id;div.style.setProperty('--msg-color',color);
  const replyData=!isSchedule && m.reply_to && window._messagesById ? window._messagesById[m.reply_to] : null;
  const replyHtml=replyData?`<div class="reply-box">↩️ <b>${esc(replyData.username||'')}</b>: ${linkify(replyData.text||'Bild')}</div>`:'';
@@ -738,8 +768,17 @@ $('messages')?.addEventListener('scroll',()=>{
 });
 $('new-messages-btn')?.addEventListener('click',()=>scrollMessagesToBottom(true));
 function renderRoomTabs(){
- $('room-tabs').innerHTML='';
- rooms.forEach(r=>{const b=document.createElement('button');b.className='room-tab '+(current&&r.id===current.id?'active':'');b.innerHTML=esc(r.name||r.code)+badgeHtml(r.id);b.onclick=()=>openRoom(r).catch(e=>err(e.message));$('room-tabs').appendChild(b)})
+ const box=$('room-tabs');
+ if(!box)return;
+ box.innerHTML='';
+ rooms.forEach(r=>{
+   const b=document.createElement('button');
+   b.className='room-tab '+(current&&r.id===current.id?'active':'');
+   b.textContent=r.name||r.code;
+   b.title=r.name||r.code;
+   b.onclick=()=>openRoom(r).catch(e=>err(e.message));
+   box.appendChild(b);
+ });
 }
 async function updatePresence(){
  if(!channel)return;
