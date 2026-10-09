@@ -35,7 +35,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 #chat-screen{flex-direction:column}.header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
 .header-left,.header-right{display:flex;align-items:center;gap:10px}.group-icon-mini{width:34px;height:34px;border-radius:10px;background:var(--group-accent,#6c5ce7);display:inline-flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}.chat-actions{display:flex;gap:8px;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border)}.chat-actions .btn{padding:8px 12px}.btn.danger{background:#6b2a32;border:1px solid #8e3943}.header h2{font-size:16px;margin:0}.online-count{font-size:12px;color:var(--muted)}.icon{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:#fff}
 #room-tabs{display:flex;gap:6px;overflow:auto;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border);flex-shrink:0}.room-tab{white-space:nowrap;border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 12px;border-radius:9px}.room-tab.active{color:#fff;background:var(--primary);border-color:var(--primary)}
-.layout{display:flex;flex:1;min-height:0}.sidebar{width:210px;border-right:1px solid var(--border);background:var(--surface);padding:10px;overflow:auto}.sidebar h3{margin:0 0 10px;font-size:13px}.sidebar-switch{display:flex;gap:5px;margin-bottom:12px}.sidebar-switch button{flex:1;border:1px solid var(--border);background:var(--surface2);color:var(--muted);border-radius:8px;padding:8px 6px;font-size:12px;font-weight:700}.sidebar-switch button.active{background:var(--primary);border-color:var(--primary);color:#fff}.sidebar-mode-note{font-size:11px;color:var(--muted);padding:5px 4px 10px;line-height:1.35}.user{padding:8px 4px;font-size:14px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:7px}
+.layout{display:flex;flex:1;min-height:0}.sidebar{width:210px;border-right:1px solid var(--border);background:var(--surface);padding:10px;overflow:auto}.sidebar h3{margin:0 0 10px;font-size:13px}.sidebar-switch{display:flex;gap:5px;margin-bottom:12px}.sidebar-switch button{flex:1;border:1px solid var(--border);background:var(--surface2);color:var(--muted);border-radius:8px;padding:8px 6px;font-size:12px;font-weight:700}.sidebar-switch button.active{background:var(--primary);border-color:var(--primary);color:#fff}.sidebar-mode-note{font-size:11px;color:var(--muted);padding:5px 4px 10px;line-height:1.35}.user{padding:8px 4px;font-size:14px}.offline-members-tab{margin-top:10px;border-top:1px solid var(--border);padding-top:9px}.offline-members-tab summary{cursor:pointer;list-style:none;padding:7px 4px;color:var(--muted);font-size:13px;font-weight:700;border-radius:7px}.offline-members-tab summary::-webkit-details-marker{display:none}.offline-members-tab summary:hover{background:var(--surface2);color:var(--text)}.offline-members-tab summary span{float:right;background:var(--surface2);padding:1px 7px;border-radius:99px;font-size:11px}.sidebar-offline-users .user{color:var(--muted)}.sidebar-offline-users .dot{background:#777!important}.offline-empty{padding:8px 4px;color:var(--muted);font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:7px}
 .main{flex:1;display:flex;flex-direction:column;min-width:0;position:relative;overflow:hidden}.main>.chat-bg-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.42;z-index:0;pointer-events:none}.main>.messages,.main>.form,.main>.replying,.main>.new-messages-btn,.main>.schedule-only-hint,.main>.tools{position:relative;z-index:1}.messages{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:9px}.new-messages-btn{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);z-index:12;border:1px solid var(--border);background:var(--primary);color:#fff;border-radius:999px;padding:9px 14px;font-weight:700;font-size:12px;box-shadow:0 8px 25px #0008;cursor:pointer}.new-messages-btn:hover{filter:brightness(1.08)}.message{max-width:min(680px,82%);align-self:flex-start}.message.own{align-self:flex-end}.meta{font-size:11px;color:var(--muted);margin:0 5px 4px}.bubble{background:var(--surface2);border-radius:14px;padding:10px 13px;line-height:1.45;overflow-wrap:anywhere}.own .bubble{background:var(--primary)}.system{align-self:center;color:var(--muted);font-size:12px}.image{max-width:100%;max-height:360px;border-radius:10px;display:block;margin-top:7px;cursor:pointer}.schedule-image{max-width:min(900px,100%);max-height:70vh;width:auto;border-radius:12px;margin-top:2px}.schedule-card{max-width:min(900px,90%)}.schedule-card .bubble{padding:8px;background:var(--surface2)}.schedule-delete{margin-top:6px}.schedule-empty{align-self:center;color:var(--muted);font-size:13px;text-align:center;padding:30px}.schedule-only-hint{font-size:12px;color:var(--muted);margin-right:auto;align-self:center}
 .form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--border);background:var(--surface)}.form input{border-radius:22px}.send{width:46px;border-radius:50%;padding:0}.attach{width:46px;padding:0;background:var(--surface2);border:1px solid var(--border)}#file{display:none}
 @media(max-width:700px){.sidebar{display:none}.message{max-width:90%}}
@@ -104,7 +104,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 </header>
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
 <div class="layout">
-<aside class="sidebar"><div class="sidebar-switch"><button id="view-chat-btn" class="active" type="button">💬 Chatt</button><button id="view-schedule-btn" type="button">🗓️ Schema</button></div><div id="sidebar-mode-note" class="sidebar-mode-note">Online</div><div id="users"></div></aside>
+<aside class="sidebar"><div class="sidebar-switch"><button id="view-chat-btn" class="active" type="button">💬 Chatt</button><button id="view-schedule-btn" type="button">🗓️ Schema</button></div><div id="sidebar-mode-note" class="sidebar-mode-note">Online</div><div id="users"></div><details id="offline-members-tab" class="offline-members-tab"><summary>⚪ Offline <span id="offline-count">0</span></summary><div id="sidebar-offline-users" class="sidebar-offline-users"><div class="offline-empty">Laddar medlemmar…</div></div></details></aside>
 <main class="main"><div id="pinned-bar" class="pinned-bar" hidden></div><div id="messages" class="messages"></div><button id="new-messages-btn" class="new-messages-btn" type="button" hidden>↓ <span id="new-messages-count">1</span> nytt meddelande</button>
 <div class="tools"><span id="schedule-only-hint" class="schedule-only-hint" hidden>🗓️ Schemat är bildbaserat – bara bilder kan skickas här.</span><button type="button" id="emoji-btn" class="tool" title="Emojis">😊</button><button type="button" id="attach2" class="tool" title="Skicka bild">🖼️</button><div id="emoji-panel" class="emoji-panel" hidden>
   <div class="emoji-head"><b>Emojis</b><button type="button" id="emoji-close" title="Stäng">✕</button></div>
@@ -855,8 +855,9 @@ async function updatePresence(){
  const state=channel.presenceState();const people=[];
  Object.values(state).flat().forEach(p=>{if(p.username&&!people.some(x=>x.username===p.username))people.push(p)});
  const messageNames=Object.values(window._messagesById||{}).map(m=>m.username);rebuildRoomColors([...people.map(p=>p.username),...messageNames]);refreshRenderedColors();
- $('users').innerHTML=people.map(p=>{const c=userColor(p.username||'');return `<div class="user"><span class="dot" style="background:${c}"></span><span class="name-color" style="color:${c}">${esc(p.username)}</span>${p.client_id===clientId?' (du)':''}</div>`}).join('');
+ $('users').innerHTML=people.map(p=>{const c=userColor(p.username||'');return `<div class="user"><span class="dot" style="background:${c}"></span><span class="name-color" style="color:${c}">${esc(p.username)}</span>${p.client_id===clientId?' (du)':''}</div>`}).join('')||'<div class="offline-empty">Ingen online just nu</div>';
  $('count').textContent=people.length+' online';
+ renderSidebarOfflineMembers().catch(()=>{});
  if(current){$('info-online').textContent=people.length;refreshOwnerMembers().catch(()=>{});renderGroupInfoOwnerTools();$('info-members').innerHTML=people.map(p=>{const c=userColor(p.username||'');return `<span class="name-color" style="color:${c}">${esc(p.username)}</span>`}).join(', ')||'Ingen';renderOfflineMembers().catch(()=>{});}
 }
 
@@ -872,6 +873,18 @@ async function setupGlobalMessageChannel(){
  });
  const {error}=await globalMessageChannel.subscribe();
  if(error)console.warn('Kunde inte aktivera olästa meddelanden',error);
+}
+async function renderSidebarOfflineMembers(){
+ const box=$('sidebar-offline-users'),count=$('offline-count');if(!box||!current)return;
+ try{
+  const names=await loadMemberNames();
+  if(!current)return;
+  const state=channel?.presenceState()||{},online=new Set();
+  Object.values(state).flat().forEach(p=>{if(p.username)online.add(p.username)});
+  const offline=names.filter(n=>!online.has(n)).sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
+  if(count)count.textContent=offline.length;
+  box.innerHTML=offline.map(n=>`<div class="user"><span class="dot"></span><span>${esc(n)}</span></div>`).join('')||'<div class="offline-empty">Ingen offline just nu</div>';
+ }catch(e){if(box)box.innerHTML='<div class="offline-empty">Kör medlems-SQL för att visa offline-listan.</div>';if(count)count.textContent='–';}
 }
 async function renderOfflineMembers(){
  const box=$('info-offline-members');if(!box||!current)return;
@@ -1029,7 +1042,7 @@ function updateSectionUI(){
  $('view-chat-btn')?.classList.toggle('active',!schedule);
  $('view-schedule-btn')?.classList.toggle('active',schedule);
  $('sidebar-mode-note').textContent=schedule?'Schema – bara bilder':'Online';
- $('users').hidden=schedule;
+ $('users').hidden=schedule;$('offline-members-tab').hidden=schedule;
  $('emoji-btn').hidden=schedule;
  $('emoji-panel').hidden=true;
  $('schedule-only-hint').hidden=!schedule;
