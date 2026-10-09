@@ -420,7 +420,19 @@ async function openAdminGroupsModal(){
   }).join('')||'<div class="admin-small">Inga grupper hittades.</div>';
  }catch(e){list.innerHTML=`<div class="admin-small">Kunde inte läsa grupperna: ${esc(e.message||String(e))}</div>`;}
 }
-$('admin-stat-groups-button')?.addEventListener('click',()=>openAdminGroupsModal());
+// Robust click handling for the groups statistic (delegated in case the panel is re-rendered).
+window.openAdminGroupsModal = openAdminGroupsModal;
+document.addEventListener('click',function(e){
+ const button=e.target && e.target.closest ? e.target.closest('#admin-stat-groups-button') : null;
+ if(!button)return;
+ e.preventDefault();
+ e.stopPropagation();
+ openAdminGroupsModal().catch(err=>{
+  const modal=$('admin-groups-modal'),list=$('admin-groups-list');
+  if(modal)modal.hidden=false;
+  if(list)list.innerHTML='<div class="admin-small">Kunde inte öppna grupplistan: '+esc(err.message||String(err))+'</div>';
+ });
+});
 $('admin-groups-close')?.addEventListener('click',()=>{$('admin-groups-modal').hidden=true});
 $('admin-groups-modal')?.addEventListener('click',e=>{if(e.target.id==='admin-groups-modal')$('admin-groups-modal').hidden=true});
 
