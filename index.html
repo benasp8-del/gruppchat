@@ -33,7 +33,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 .btn{border:0;border-radius:10px;padding:11px 15px;color:#fff;background:var(--primary);font-weight:600}.btn.secondary{background:var(--surface2);border:1px solid var(--border)}.btn.full{width:100%}
 .saved-chats{margin-top:16px;display:flex;flex-direction:column;gap:7px}.saved-chat{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:8px 10px}.saved-chat .remove{border:0;background:transparent;color:#ff8585;font-size:18px;cursor:pointer}.error{margin-top:14px;padding:10px;border-radius:9px;background:#ff6b6b18;color:#ff8585;border:1px solid #ff6b6b44;font-size:13px}.info{margin-top:18px;padding:12px;border-radius:10px;background:var(--primary)12;color:#cfc9ff;font-size:13px}
 #chat-screen{flex-direction:column}.header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
-.header-left,.header-right{display:flex;align-items:center;gap:10px}.group-icon-mini{width:34px;height:34px;border-radius:10px;background:var(--group-accent,#6c5ce7);display:inline-flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}.chat-actions{display:flex;gap:8px;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border)}.chat-actions .btn{padding:8px 12px}.btn.danger{background:#6b2a32;border:1px solid #8e3943}.header h2{font-size:16px;margin:0}.online-count{font-size:12px;color:var(--muted)}.icon{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:#fff}
+.header-left,.header-right{display:flex;align-items:center;gap:10px}.global-announcement{display:none;align-items:center;gap:7px;min-width:0;max-width:min(38vw,520px);padding:8px 11px;border:1px solid #e8b84b66;border-radius:10px;background:#e8b84b18;color:var(--text);font-size:12px;line-height:1.3;overflow:hidden}.global-announcement.visible{display:flex}.global-announcement .announcement-label{flex-shrink:0;font-weight:800;color:#f5c75e}.global-announcement .announcement-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.global-announcement .announcement-text.expanded{white-space:normal;overflow-wrap:anywhere}.global-announcement button{border:0;background:transparent;color:inherit;padding:0 2px;font-size:14px;flex-shrink:0}@media(max-width:700px){.header{gap:6px;padding:6px}.global-announcement{position:absolute;top:70px;left:8px;right:8px;max-width:none;z-index:15;background:#28231a;box-shadow:0 4px 14px #0005}.header{position:relative}.header-left{gap:5px}.header-right{gap:4px}.header-right .btn{padding:7px 8px}.header-right .icon{width:34px;height:34px}}.group-icon-mini{width:34px;height:34px;border-radius:10px;background:var(--group-accent,#6c5ce7);display:inline-flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}.chat-actions{display:flex;gap:8px;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border)}.chat-actions .btn{padding:8px 12px}.btn.danger{background:#6b2a32;border:1px solid #8e3943}.header h2{font-size:16px;margin:0}.online-count{font-size:12px;color:var(--muted)}.icon{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:#fff}
 #room-tabs{display:flex;gap:6px;overflow:auto;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border);flex-shrink:0}.room-tab{white-space:nowrap;border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 12px;border-radius:9px}.room-tab.active{color:#fff;background:var(--primary);border-color:var(--primary)}
 .layout{display:flex;flex:1;min-height:0}.sidebar{width:210px;border-right:1px solid var(--border);background:var(--surface);padding:10px;overflow:auto}.sidebar h3{margin:0 0 10px;font-size:13px}.sidebar-switch{display:flex;gap:5px;margin-bottom:12px}.sidebar-switch button{flex:1;border:1px solid var(--border);background:var(--surface2);color:var(--muted);border-radius:8px;padding:8px 6px;font-size:12px;font-weight:700}.sidebar-switch button.active{background:var(--primary);border-color:var(--primary);color:#fff}.sidebar-mode-note{font-size:11px;color:var(--muted);padding:5px 4px 10px;line-height:1.35}.user{padding:8px 4px;font-size:14px}.offline-members-tab{margin-top:10px;border-top:1px solid var(--border);padding-top:9px}.offline-members-tab summary{cursor:pointer;list-style:none;padding:7px 4px;color:var(--muted);font-size:13px;font-weight:700;border-radius:7px}.offline-members-tab summary::-webkit-details-marker{display:none}.offline-members-tab summary:hover{background:var(--surface2);color:var(--text)}.offline-members-tab summary span{float:right;background:var(--surface2);padding:1px 7px;border-radius:99px;font-size:11px}.sidebar-offline-users .user{color:var(--muted)}.sidebar-offline-users .dot{background:#777!important}.offline-empty{padding:8px 4px;color:var(--muted);font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:7px}
 .main{flex:1;display:flex;flex-direction:column;min-width:0;position:relative;overflow:hidden}.main>.chat-bg-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.42;z-index:0;pointer-events:none}.main>.messages,.main>.form,.main>.replying,.main>.new-messages-btn,.main>.schedule-only-hint,.main>.tools{position:relative;z-index:1}.messages{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:9px}.new-messages-btn{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);z-index:12;border:1px solid var(--border);background:var(--primary);color:#fff;border-radius:999px;padding:9px 14px;font-weight:700;font-size:12px;box-shadow:0 8px 25px #0008;cursor:pointer}.new-messages-btn:hover{filter:brightness(1.08)}.message{max-width:min(680px,82%);align-self:flex-start}.message.own{align-self:flex-end}.meta{font-size:11px;color:var(--muted);margin:0 5px 4px}.bubble{background:var(--surface2);border-radius:14px;padding:10px 13px;line-height:1.45;overflow-wrap:anywhere}.own .bubble{background:var(--primary)}.system{align-self:center;color:var(--muted);font-size:12px}.image{max-width:100%;max-height:360px;border-radius:10px;display:block;margin-top:7px;cursor:pointer}.schedule-image{max-width:min(900px,100%);max-height:70vh;width:auto;border-radius:12px;margin-top:2px}.schedule-card{max-width:min(900px,90%)}.schedule-card .bubble{padding:8px;background:var(--surface2)}.schedule-delete{margin-top:6px}.schedule-empty{align-self:center;color:var(--muted);font-size:13px;text-align:center;padding:30px}.schedule-only-hint{font-size:12px;color:var(--muted);margin-right:auto;align-self:center}
@@ -100,7 +100,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 <section id="chat-screen" class="screen">
 <header class="header">
 <div class="header-left"><button id="back" class="icon" title="Lämna">←</button><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
-<div class="header-right"><button id="group-info-btn" class="icon" title="Gruppinfo">ⓘ</button><button id="settings-btn" class="icon" title="Inställningar">⚙️</button><button id="share-group" class="btn secondary" title="Dela gruppen">🔗 Dela</button><button id="copy" class="btn secondary code-button" title="Håll musen över för att visa koden">Kod <b id="code" class="code-text">••••••</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
+<div id="global-announcement" class="global-announcement" role="status" aria-live="polite"><span class="announcement-label">📢 Meddelande</span><span id="global-announcement-text" class="announcement-text"></span><button id="announcement-expand" type="button" title="Visa hela meddelandet" aria-label="Visa hela meddelandet">↕</button></div><div class="header-right"><button id="group-info-btn" class="icon" title="Gruppinfo">ⓘ</button><button id="settings-btn" class="icon" title="Inställningar">⚙️</button><button id="share-group" class="btn secondary" title="Dela gruppen">🔗 Dela</button><button id="copy" class="btn secondary code-button" title="Håll musen över för att visa koden">Kod <b id="code" class="code-text">••••••</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
 </header>
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
 <div class="layout">
@@ -128,6 +128,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 <div id="admin-modal" class="admin-modal" hidden>
   <div class="admin-card">
     <div class="admin-head"><div><h3>🛡️ Adminpanel</h3><div class="admin-small">Övervaka användare, pausa chatten och hantera grupper.</div></div><button id="admin-close" class="settings-close" type="button">✕</button></div>
+    <div class="admin-panel" style="margin-top:14px"><b>📢 Meddelande till alla</b><div class="admin-small" style="margin:6px 0 10px">Skriv ett meddelande som visas för alla användare högst upp bredvid Gruppinfo. Lämna tomt och tryck Ta bort för att dölja det.</div><textarea id="admin-announcement-input" maxlength="500" rows="3" placeholder="Skriv ett meddelande till alla…" style="width:100%;resize:vertical;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:9px;padding:10px;font:inherit"></textarea><div id="admin-announcement-status" class="admin-small" aria-live="polite" style="margin-top:6px"></div><div class="admin-actions"><button id="admin-announcement-save" class="btn" type="button">📢 Visa för alla</button><button id="admin-announcement-clear" class="btn secondary" type="button">Ta bort meddelandet</button></div></div>
     <div class="setting" style="padding-bottom:10px"><div class="setting-title">🛑 Global stopp</div><div id="admin-lock-status" class="admin-small">Kontrollerar status…</div><div class="admin-actions"><button id="admin-lock-btn" class="btn danger" type="button">Stoppa alla andra</button><button id="admin-unlock-btn" class="btn secondary" type="button">Återgå till normalt</button></div></div>
     <div class="admin-grid">
       <div class="admin-panel"><b>Användare</b><div class="admin-small" style="margin:5px 0 9px">Sök efter namn, klicka på en person för att visa uppgifter eller tryck 🗑️ direkt på raden för att ta bort just den personen. Senast aktiv betyder senaste registrerade session eller meddelande – inte garanterad onlinestatus.</div><div class="admin-toolbar"><button id="admin-refresh-users" class="btn secondary" type="button">↻ Ladda om listan</button><input id="admin-user-search" type="search" placeholder="Sök användare…" aria-label="Sök användare"></div><div class="admin-stats"><div class="admin-stat"><b id="admin-stat-users">—</b><span class="admin-small">Användare</span></div><div class="admin-stat"><b id="admin-stat-groups">—</b><span class="admin-small">Grupper</span></div><div class="admin-stat"><b id="admin-stat-messages">—</b><span class="admin-small">Meddelanden</span></div></div><div id="admin-refresh-status" class="admin-small" aria-live="polite"></div><div id="admin-users" class="admin-list"></div></div>
@@ -211,6 +212,8 @@ let replyingTo=null;
 let adminPassword='';
 let adminUnlocked=false;
 let globalControlChannel=null;
+let announcementChannel=null;
+let currentAnnouncement='';
 let moderationTimer=null;
 let moderationChannel=null;
 let moderationBlocked=false;
@@ -222,6 +225,7 @@ localStorage.setItem('gc_client_id',clientId);
 
 const $=id=>document.getElementById(id);
 updateNameUI();
+loadGlobalAnnouncement();watchGlobalAnnouncement();
 
 function err(t){$('error').textContent=t;$('error').hidden=false}
 function clearErr(){$('error').hidden=true}
@@ -340,6 +344,7 @@ async function openAdminPanel(){
   if(!adminUnlocked)await adminLogin();
   if(!adminUnlocked)return;
   $('settings-modal').hidden=true;$('admin-modal').hidden=false;
+  await loadGlobalAnnouncement();$('admin-announcement-input').value=currentAnnouncement;
   await refreshAdminPanel();
  }catch(e){alert(e.message)}
 }
@@ -353,6 +358,39 @@ async function fetchAllMessages(filters={}){
  }
  return out;
 }
+function renderGlobalAnnouncement(value){
+ currentAnnouncement=String(value||'').trim();
+ const box=$('global-announcement'),txt=$('global-announcement-text'),toggle=$('announcement-expand');
+ if(!box||!txt)return;
+ box.classList.toggle('visible',!!currentAnnouncement);txt.textContent=currentAnnouncement;
+ txt.classList.remove('expanded');if(toggle)toggle.textContent='↕';
+}
+async function loadGlobalAnnouncement(){
+ try{
+  const {data,error}=await db.from('global_announcement').select('id,message,updated_at').eq('id',1).maybeSingle();
+  if(error)throw error;renderGlobalAnnouncement(data?.message||'');
+ }catch(e){console.warn('Kunde inte läsa globalt meddelande. Kör SQL-filen för globalt meddelande i Supabase.',e.message||e);}
+}
+async function saveGlobalAnnouncement(clear=false){
+ if(!adminUnlocked){alert('Öppna adminpanelen först.');return;}
+ const status=$('admin-announcement-status');const message=clear?'':String($('admin-announcement-input').value||'').trim();
+ if(!clear&&!message){if(status)status.textContent='Skriv ett meddelande först, eller välj Ta bort meddelandet.';return;}
+ if(status)status.textContent='Sparar…';
+ try{
+  const {error}=await db.from('global_announcement').upsert({id:1,message,updated_at:new Date().toISOString()},{onConflict:'id'});
+  if(error)throw error;
+  $('admin-announcement-input').value=message;renderGlobalAnnouncement(message);
+  if(status)status.textContent=clear?'Meddelandet har tagits bort.':'Meddelandet visas nu för alla.';
+ }catch(e){if(status)status.textContent='Kunde inte spara. Kontrollera att du har kört SQL-filen i Supabase. '+(e.message||'');}
+}
+function watchGlobalAnnouncement(){
+ if(announcementChannel)return;
+ announcementChannel=db.channel('global-announcement-live').on('postgres_changes',{event:'*',schema:'public',table:'global_announcement'},p=>renderGlobalAnnouncement(p.new?.message||'')).subscribe();
+}
+$('announcement-expand')?.addEventListener('click',()=>{const txt=$('global-announcement-text');if(!txt)return;const expanded=txt.classList.toggle('expanded');$('announcement-expand').textContent=expanded?'↕':'↕';$('announcement-expand').title=expanded?'Visa mindre':'Visa hela meddelandet';});
+$('admin-announcement-save')?.addEventListener('click',()=>saveGlobalAnnouncement(false));
+$('admin-announcement-clear')?.addEventListener('click',()=>{if(confirm('Ta bort meddelandet för alla användare?'))saveGlobalAnnouncement(true);});
+
 async function refreshAdminPanel(){
  if(!adminUnlocked)return;
  const status=$('admin-refresh-status');if(status)status.textContent='Hämtar senaste uppgifter…';
@@ -687,7 +725,7 @@ async function openRoom(room){
    const {error:memberError}=await db.from('room_members').upsert({room_id:room.id,username:username},{onConflict:'room_id,username',ignoreDuplicates:true});
    if(memberError)console.warn('Kunde inte spara medlemskapet:',memberError.message);
  } catch(memberError) { console.warn('Kunde inte spara medlemskapet:',memberError); }
- await watchRoomSettings();clearUnread(room.id);addRoom(room);renderRoomTabs();applyGroupAppearance(room);
+ await watchRoomSettings();clearUnread(room.id);addRoom(room);renderRoomTabs();applyGroupAppearance(room);await loadGlobalAnnouncement();watchGlobalAnnouncement();
  await startNotificationChannels();
  $('join-screen').classList.remove('active');$('chat-screen').classList.add('active');
  $('title').textContent=room.name||'Grupp';$('code').textContent='••••••';$('copy').classList.add('code-hidden');$('input').focus();
