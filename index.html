@@ -81,7 +81,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 <body>
 <section id="join-screen" class="screen active">
 <div class="card">
-<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">Gruppchat 1</div></div>
+<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">1.0</div></div>
 <div class="group"><label>Ditt namn</label><input id="username" maxlength="20" placeholder="Välj ditt namn..." autocomplete="off"><div id="name-lock-hint" class="hint" style="margin-top:6px">Du väljer namnet en gång. Det kan ändras senare i ⚙️ Inställningar med en särskild kod.</div></div>
 <div class="tabs"><button class="tab active" data-tab="join">Gå med</button><button class="tab" data-tab="create">Skapa rum</button></div>
 <div id="join-tab" class="tab-content active">
@@ -99,7 +99,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 
 <section id="chat-screen" class="screen">
 <header class="header">
-<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">Gruppchat 1</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
+<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">1.0</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
 <div id="global-announcement" class="global-announcement" role="status" aria-live="polite"><span class="announcement-label">📢 Meddelande</span><span id="global-announcement-text" class="announcement-text"></span><button id="announcement-expand" type="button" title="Visa hela meddelandet" aria-label="Visa hela meddelandet">↕</button></div><div class="header-right"><button id="group-info-btn" class="icon" title="Gruppinfo">ⓘ</button><button id="settings-btn" class="icon" title="Inställningar">⚙️</button><button id="share-group" class="btn secondary" title="Dela gruppen">🔗 Dela</button><button id="copy" class="btn secondary code-button" title="Håll musen över för att visa koden">Kod <b id="code" class="code-text">••••••</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
 </header>
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
@@ -438,9 +438,12 @@ async function deleteAdminGroup(roomId,roomName){
    throw new Error(`Fel vid borttagning från ${table}: ${error.message}`);
   }
  }
- const {data:deletedRooms,error:roomError}=await db.from('rooms').delete().eq('id',roomId).select('id');
- if(roomError)throw new Error(`Fel vid borttagning av gruppen: ${roomError.message}`);
- if(!deletedRooms||deletedRooms.length===0)throw new Error('Gruppen kunde inte tas bort. Kontrollera behörigheter/RLS i Supabase.');
+ const {error:roomError}=await db.from('rooms').delete().eq('id',roomId);
+ if(roomError)throw new Error(`Supabase nekade borttagningen av gruppen: ${roomError.message}`);
+ // Verify using a separate read; DELETE ... SELECT can return zero rows when SELECT RLS is restrictive.
+ const {data:stillThere,error:verifyError}=await db.from('rooms').select('id').eq('id',roomId).maybeSingle();
+ if(verifyError)throw new Error(`Borttagningen skickades, men kunde inte verifieras: ${verifyError.message}`);
+ if(stillThere)throw new Error('Gruppen finns fortfarande kvar. Supabase RLS saknar troligen en DELETE-policy för rooms-tabellen. Kör SQL-filen Gruppchat 1.0 - fix.sql i Supabase SQL Editor och försök igen.');
  // Update this browser immediately and tell other open clients via the rooms DELETE realtime event.
  rooms=rooms.filter(r=>r.id!==roomId);saveRooms();
  if(current?.id===roomId){
