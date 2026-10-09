@@ -81,7 +81,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 <body>
 <section id="join-screen" class="screen active">
 <div class="card">
-<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">1.0</div></div>
+<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">Version: 1.0</div></div>
 <div class="group"><label>Ditt namn</label><input id="username" maxlength="20" placeholder="Välj ditt namn..." autocomplete="off"><div id="name-lock-hint" class="hint" style="margin-top:6px">Du väljer namnet en gång. Det kan ändras senare i ⚙️ Inställningar med en särskild kod.</div></div>
 <div class="tabs"><button class="tab active" data-tab="join">Gå med</button><button class="tab" data-tab="create">Skapa rum</button></div>
 <div id="join-tab" class="tab-content active">
@@ -99,7 +99,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 
 <section id="chat-screen" class="screen">
 <header class="header">
-<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">1.0</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
+<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">Version: 1.0</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
 <div id="global-announcement" class="global-announcement" role="status" aria-live="polite"><span class="announcement-label">📢 Meddelande</span><span id="global-announcement-text" class="announcement-text"></span><button id="announcement-expand" type="button" title="Visa hela meddelandet" aria-label="Visa hela meddelandet">↕</button></div><div class="header-right"><button id="group-info-btn" class="icon" title="Gruppinfo">ⓘ</button><button id="settings-btn" class="icon" title="Inställningar">⚙️</button><button id="share-group" class="btn secondary" title="Dela gruppen">🔗 Dela</button><button id="copy" class="btn secondary code-button" title="Håll musen över för att visa koden">Kod <b id="code" class="code-text">••••••</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
 </header>
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
