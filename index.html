@@ -76,12 +76,12 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 @media(max-width:760px){.admin-grid{grid-template-columns:1fr}.admin-card{padding:14px}}
 .background-upload,.background-preview,#group-background,#bg-file,#background-file{display:none!important}
 .offline-list{font-size:13px;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}.pinned-bar{flex-shrink:0;padding:8px 12px;background:color-mix(in srgb,var(--group-accent,#6c5ce7) 18%,var(--surface));border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:5px}.pinned-bar[hidden]{display:none!important}.pinned-head{font-size:12px;font-weight:800;color:var(--primary)}.pinned-item{display:flex;align-items:center;gap:8px;min-width:0}.pinned-jump{flex:1;min-width:0;text-align:left;border:0;background:transparent;color:var(--text);font:inherit;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;padding:2px}.pinned-unpin{border:1px solid var(--border);border-radius:7px;background:var(--surface);color:var(--text);padding:3px 7px;cursor:pointer;font-size:12px}.message-pinned-label{font-size:11px;font-weight:700;color:var(--primary);margin-bottom:4px}.msg-action.pin-action{color:var(--primary)}.message.flash-pinned{outline:2px solid var(--primary);outline-offset:3px}.member-count-button{border:0;background:transparent;color:var(--primary);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:0}.members-modal{position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;padding:16px;z-index:80}.members-modal[hidden]{display:none!important}.members-card{width:min(420px,100%);max-height:85vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px}.members-row{display:flex;align-items:center;gap:9px;padding:9px 4px;border-bottom:1px solid var(--border)}.member-role{margin-left:auto;font-size:12px;color:var(--primary);font-weight:700}
-</style></head>
+.app-version{display:inline-block;margin-top:8px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.02em}.app-version-header{margin:0 0 0 6px;white-space:nowrap}.header-left{flex-wrap:wrap}@media(max-width:600px){.app-version-header{font-size:10px;padding:2px 5px}}\n</style></head>
 </head>
 <body>
 <section id="join-screen" class="screen active">
 <div class="card">
-<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div></div>
+<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">Gruppchat 1</div></div>
 <div class="group"><label>Ditt namn</label><input id="username" maxlength="20" placeholder="Välj ditt namn..." autocomplete="off"><div id="name-lock-hint" class="hint" style="margin-top:6px">Du väljer namnet en gång. Det kan ändras senare i ⚙️ Inställningar med en särskild kod.</div></div>
 <div class="tabs"><button class="tab active" data-tab="join">Gå med</button><button class="tab" data-tab="create">Skapa rum</button></div>
 <div id="join-tab" class="tab-content active">
@@ -99,7 +99,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 
 <section id="chat-screen" class="screen">
 <header class="header">
-<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
+<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">Gruppchat 1</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
 <div id="global-announcement" class="global-announcement" role="status" aria-live="polite"><span class="announcement-label">📢 Meddelande</span><span id="global-announcement-text" class="announcement-text"></span><button id="announcement-expand" type="button" title="Visa hela meddelandet" aria-label="Visa hela meddelandet">↕</button></div><div class="header-right"><button id="group-info-btn" class="icon" title="Gruppinfo">ⓘ</button><button id="settings-btn" class="icon" title="Inställningar">⚙️</button><button id="share-group" class="btn secondary" title="Dela gruppen">🔗 Dela</button><button id="copy" class="btn secondary code-button" title="Håll musen över för att visa koden">Kod <b id="code" class="code-text">••••••</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
 </header>
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
@@ -426,17 +426,31 @@ async function deleteAdminGroup(roomId,roomName){
  if(!confirm(`Är du säker på att du vill ta bort gruppen ”${roomName}”? Detta tar bort gruppen, dess meddelanden och registrerade medlemskap. Åtgärden går inte att ångra.`))return;
  const list=$('admin-groups-list');
  list.innerHTML='<div class="admin-small">Tar bort gruppen och dess innehåll…</div>';
- // Delete related records first, in case the database has no cascade rules.
- for(const table of ['messages','room_members']){
-  const {error}=await db.from(table).delete().eq('room_id',roomId);
-  if(error)throw new Error(`Fel vid borttagning från ${table}: ${error.message}`);
+ // Remove dependent records before deleting the room. Ignore only missing optional tables/columns.
+ for(const table of ['messages','room_members','room_moderation','user_sessions']){
+  let query=db.from(table).delete().eq('room_id',roomId);
+  const {error}=await query;
+  if(error){
+   const msg=(error.message||'').toLowerCase();
+   const optionalMissing=(msg.includes('does not exist')||msg.includes('schema cache')||msg.includes('could not find the table'));
+   if(table==='room_moderation'&&optionalMissing)continue;
+   if(table==='user_sessions'&&optionalMissing)continue;
+   throw new Error(`Fel vid borttagning från ${table}: ${error.message}`);
+  }
  }
- const {error:sessionError}=await db.from('user_sessions').delete().eq('room_id',roomId);
- if(sessionError)throw new Error(`Fel vid borttagning av sessioner: ${sessionError.message}`);
- const {error:roomError}=await db.from('rooms').delete().eq('id',roomId);
+ const {data:deletedRooms,error:roomError}=await db.from('rooms').delete().eq('id',roomId).select('id');
  if(roomError)throw new Error(`Fel vid borttagning av gruppen: ${roomError.message}`);
+ if(!deletedRooms||deletedRooms.length===0)throw new Error('Gruppen kunde inte tas bort. Kontrollera behörigheter/RLS i Supabase.');
+ // Update this browser immediately and tell other open clients via the rooms DELETE realtime event.
  rooms=rooms.filter(r=>r.id!==roomId);saveRooms();
- if(current?.id===roomId){current=null;channel?.unsubscribe?.();channel=null;renderRoomTabs();$('chat-screen').hidden=true;$('home-screen').hidden=false;}
+ if(current?.id===roomId){
+  if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}
+  if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}
+  if(channel){await db.removeChannel(channel).catch(()=>{});channel=null;}
+  current=null;presenceTracked=false;clearModerationUI();touchSession().catch(()=>{});
+  $('chat-screen').classList.remove('active');$('join-screen').classList.add('active');
+ }
+ renderRoomTabs();
  await refreshAdminPanel();
  await openAdminGroupsModal();
 }
@@ -560,6 +574,27 @@ function setupGlobalControl(){
  globalControlChannel.subscribe();
  refreshGlobalLock().catch(console.error);
 }
+// Keep all open clients in sync when an admin deletes a room.
+let deletedRoomSyncChannel=null;
+function setupDeletedRoomSync(){
+ if(deletedRoomSyncChannel)return;
+ deletedRoomSyncChannel=db.channel('gc-room-delete-sync');
+ deletedRoomSyncChannel.on('postgres_changes',{event:'DELETE',schema:'public',table:'rooms'},async payload=>{
+  const deletedId=payload.old?.id;
+  if(!deletedId)return;
+  rooms=rooms.filter(r=>r.id!==deletedId);saveRooms();renderRoomTabs();
+  if(current?.id===deletedId){
+   if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}
+   if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}
+   if(channel){await db.removeChannel(channel).catch(()=>{});channel=null;}
+   current=null;presenceTracked=false;clearModerationUI();touchSession().catch(()=>{});
+   $('chat-screen').classList.remove('active');$('join-screen').classList.add('active');
+   const e=$('error');if(e){e.hidden=false;e.textContent='Den här gruppen har tagits bort av en administratör.';}
+  }
+ }).subscribe();
+}
+setupDeletedRoomSync();
+
 async function touchSession(){
  if(!username)return;
  await db.from('user_sessions').upsert({client_id:clientId,username,room_id:current?.id||null,last_seen:new Date().toISOString()},{onConflict:'client_id'});
