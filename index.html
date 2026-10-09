@@ -43,7 +43,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 /* Gruppinfo, olästa meddelanden och användarfärger */
 .group-info[hidden]{display:none!important}
 .group-info{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:20px;z-index:60}
-.group-info-card{width:min(420px,100%);background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 20px 60px #0009}
+.group-info-card{width:min(420px,100%);max-height:85vh;overflow-y:auto;overscroll-behavior:contain;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 20px 60px #0009}
 .group-info-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.group-info-head h3{margin:0;font-size:18px}.group-info-close{border:0;background:var(--surface2);color:var(--text);width:34px;height:34px;border-radius:9px}
 .info-row{padding:11px 0;border-bottom:1px solid var(--border)}.info-row:last-child{border-bottom:0}.info-label{font-size:11px;color:var(--muted);margin-bottom:3px}.info-value{font-size:14px;overflow-wrap:anywhere}
 .unread-badge{display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 5px;margin-left:7px;border-radius:999px;background:#ff5d73;color:#fff;font-size:10px;font-weight:700;vertical-align:middle}
@@ -67,7 +67,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 .admin-modal[hidden],.lock-screen[hidden],.admin-view-modal[hidden]{display:none!important}
 .admin-modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px;z-index:200}
 .admin-card{width:min(980px,100%);max-height:94vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 25px 80px #000c}
-.admin-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.admin-head h3{margin:0}.admin-grid{display:grid;grid-template-columns:280px 1fr;gap:14px;margin-top:15px}.admin-panel{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px}.admin-list{display:flex;flex-direction:column;gap:6px;max-height:360px;overflow:auto}.admin-user{width:100%;text-align:left;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:9px;padding:10px;cursor:pointer}.admin-user:hover{border-color:var(--primary)}.admin-user.active{border-color:var(--primary);background:#6c5ce722}.admin-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.admin-small{font-size:12px;color:var(--muted)}
+.admin-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.admin-head h3{margin:0}.admin-grid{display:grid;grid-template-columns:280px 1fr;gap:14px;margin-top:15px}.admin-panel{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px}.admin-list{display:flex;flex-direction:column;gap:6px;max-height:360px;overflow:auto}.admin-user-row{display:flex;align-items:stretch;gap:6px}.admin-user{flex:1;min-width:0;width:100%;text-align:left;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:9px;padding:10px;cursor:pointer}.admin-user-delete{flex-shrink:0;border:1px solid var(--border);background:var(--surface);color:var(--danger,#ef4444);border-radius:9px;padding:0 11px;cursor:pointer;font-size:16px}.admin-user-delete:hover{background:#ef444422;border-color:#ef4444}.admin-user:hover{border-color:var(--primary)}.admin-user.active{border-color:var(--primary);background:#6c5ce722}.admin-toolbar{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}.admin-toolbar input{min-width:0;flex:1;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:9px;padding:9px}.admin-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0}.admin-stat{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px}.admin-stat b{display:block;font-size:18px}.admin-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.admin-small{font-size:12px;color:var(--muted)}
 .admin-view-modal{position:fixed;inset:0;background:#000d;display:flex;align-items:stretch;justify-content:center;padding:14px;z-index:220}.admin-view-card{width:min(1250px,100%);height:calc(100vh - 28px);background:var(--bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 25px 90px #000e}.admin-view-head{height:64px;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}.admin-view-head-left{display:flex;align-items:center;gap:10px}.admin-view-title{font-weight:800}.admin-view-sub{font-size:12px;color:var(--muted)}.admin-view-tabs{display:flex;gap:6px;overflow:auto;padding:8px 10px;background:#141419;border-bottom:1px solid var(--border);flex-shrink:0}.admin-view-tab{white-space:nowrap;border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 12px;border-radius:9px}.admin-view-tab.active{color:#fff;background:var(--primary);border-color:var(--primary)}.admin-view-layout{display:flex;flex:1;min-height:0}.admin-view-sidebar{width:210px;border-right:1px solid var(--border);background:var(--surface);padding:14px;overflow:auto}.admin-view-main{flex:1;display:flex;flex-direction:column;min-width:0}.admin-view-messages{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:9px}.admin-view-message{max-width:min(680px,82%);align-self:flex-start}.admin-view-message.selected-user{align-self:flex-end}.admin-view-message .bubble{background:var(--surface2);border-radius:14px;padding:10px 13px;line-height:1.45;overflow-wrap:anywhere;border-left:3px solid var(--msg-color,#6c5ce7)}.admin-view-message.selected-user .bubble{background:color-mix(in srgb,var(--msg-color,#6c5ce7) 72%, #111 28%)}.admin-view-readonly{padding:10px 14px;border-top:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:12px;text-align:center;flex-shrink:0}.admin-view-placeholder{padding:30px;text-align:center;color:var(--muted)}.lock-screen{position:fixed;inset:0;background:#0b0b0f;z-index:190;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center}.lock-card{width:min(430px,100%);background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px}.lock-card h2{margin:8px 0}.lock-card p{color:var(--muted);line-height:1.5}.moderation-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)}
 
 /* Anpassa grupp + gruppstatistik */.bg-crop-modal[hidden]{display:none!important}.bg-crop-modal{position:fixed;inset:0;background:#000c;display:flex;align-items:center;justify-content:center;padding:18px;z-index:120}.bg-crop-card{width:min(620px,100%);max-height:94vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 25px 90px #000e}.bg-crop-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.bg-crop-head h3{margin:0}.bg-crop-preview{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#111;border:1px solid var(--border);margin-bottom:14px}.bg-crop-preview img{position:absolute;max-width:none;transform-origin:center center;user-select:none;pointer-events:none}.crop-controls{display:grid;gap:10px}.crop-control{display:grid;grid-template-columns:90px 1fr 52px;gap:8px;align-items:center}.crop-control label{font-size:12px;color:var(--muted)}.crop-control input[type=range]{width:100%}.crop-value{font-size:12px;text-align:right;color:var(--muted)}.bg-crop-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px;flex-wrap:wrap}
@@ -75,6 +75,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 .moderation-screen[hidden]{display:none!important}.moderation-screen{position:fixed;inset:0;background:#000c;z-index:180;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center}.moderation-card{width:min(440px,100%);background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:0 25px 80px #000c}.moderation-card h2{margin:8px 0}.moderation-card p{color:var(--muted);line-height:1.5}.mod-countdown{font-size:22px;font-weight:800;margin:12px 0}
 @media(max-width:760px){.admin-grid{grid-template-columns:1fr}.admin-card{padding:14px}}
 .background-upload,.background-preview,#group-background,#bg-file,#background-file{display:none!important}
+.offline-list{font-size:13px;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}.pinned-bar{flex-shrink:0;padding:8px 12px;background:color-mix(in srgb,var(--group-accent,#6c5ce7) 18%,var(--surface));border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:5px}.pinned-bar[hidden]{display:none!important}.pinned-head{font-size:12px;font-weight:800;color:var(--primary)}.pinned-item{display:flex;align-items:center;gap:8px;min-width:0}.pinned-jump{flex:1;min-width:0;text-align:left;border:0;background:transparent;color:var(--text);font:inherit;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;padding:2px}.pinned-unpin{border:1px solid var(--border);border-radius:7px;background:var(--surface);color:var(--text);padding:3px 7px;cursor:pointer;font-size:12px}.message-pinned-label{font-size:11px;font-weight:700;color:var(--primary);margin-bottom:4px}.msg-action.pin-action{color:var(--primary)}.message.flash-pinned{outline:2px solid var(--primary);outline-offset:3px}.member-count-button{border:0;background:transparent;color:var(--primary);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:0}.members-modal{position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;padding:16px;z-index:80}.members-modal[hidden]{display:none!important}.members-card{width:min(420px,100%);max-height:85vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px}.members-row{display:flex;align-items:center;gap:9px;padding:9px 4px;border-bottom:1px solid var(--border)}.member-role{margin-left:auto;font-size:12px;color:var(--primary);font-weight:700}
 </style></head>
 </head>
 <body>
@@ -104,7 +105,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
 <div class="layout">
 <aside class="sidebar"><div class="sidebar-switch"><button id="view-chat-btn" class="active" type="button">💬 Chatt</button><button id="view-schedule-btn" type="button">🗓️ Schema</button></div><div id="sidebar-mode-note" class="sidebar-mode-note">Online</div><div id="users"></div></aside>
-<main class="main"><div id="messages" class="messages"></div><button id="new-messages-btn" class="new-messages-btn" type="button" hidden>↓ <span id="new-messages-count">1</span> nytt meddelande</button>
+<main class="main"><div id="pinned-bar" class="pinned-bar" hidden></div><div id="messages" class="messages"></div><button id="new-messages-btn" class="new-messages-btn" type="button" hidden>↓ <span id="new-messages-count">1</span> nytt meddelande</button>
 <div class="tools"><span id="schedule-only-hint" class="schedule-only-hint" hidden>🗓️ Schemat är bildbaserat – bara bilder kan skickas här.</span><button type="button" id="emoji-btn" class="tool" title="Emojis">😊</button><button type="button" id="attach2" class="tool" title="Skicka bild">🖼️</button><div id="emoji-panel" class="emoji-panel" hidden>
   <div class="emoji-head"><b>Emojis</b><button type="button" id="emoji-close" title="Stäng">✕</button></div>
   <div id="emoji-list"></div>
@@ -129,8 +130,8 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
     <div class="admin-head"><div><h3>🛡️ Adminpanel</h3><div class="admin-small">Övervaka användare, pausa chatten och hantera grupper.</div></div><button id="admin-close" class="settings-close" type="button">✕</button></div>
     <div class="setting" style="padding-bottom:10px"><div class="setting-title">🛑 Global stopp</div><div id="admin-lock-status" class="admin-small">Kontrollerar status…</div><div class="admin-actions"><button id="admin-lock-btn" class="btn danger" type="button">Stoppa alla andra</button><button id="admin-unlock-btn" class="btn secondary" type="button">Återgå till normalt</button></div></div>
     <div class="admin-grid">
-      <div class="admin-panel"><b>Användare</b><div class="admin-small" style="margin:5px 0 9px">Alla namn som har skrivit meddelanden eller haft en aktiv session visas här. Klicka på en person för att öppna en läsbar vy av deras chattar.</div><div id="admin-users" class="admin-list"></div></div>
-      <div class="admin-panel"><div id="admin-user-title"><b>Ingen användare vald</b></div><div id="admin-user-meta" class="admin-small" style="margin:5px 0 10px">Klicka på en person för att öppna deras chattvy.</div><div class="admin-small">Du skickas till en separat läsvy där du kan byta mellan de grupper personen har skrivit i. Du kan inte skicka något i deras namn.</div></div>
+      <div class="admin-panel"><b>Användare</b><div class="admin-small" style="margin:5px 0 9px">Sök efter namn, klicka på en person för att visa uppgifter eller tryck 🗑️ direkt på raden för att ta bort just den personen. Senast aktiv betyder senaste registrerade session eller meddelande – inte garanterad onlinestatus.</div><div class="admin-toolbar"><button id="admin-refresh-users" class="btn secondary" type="button">↻ Ladda om listan</button><input id="admin-user-search" type="search" placeholder="Sök användare…" aria-label="Sök användare"></div><div class="admin-stats"><div class="admin-stat"><b id="admin-stat-users">—</b><span class="admin-small">Användare</span></div><div class="admin-stat"><b id="admin-stat-groups">—</b><span class="admin-small">Grupper</span></div><div class="admin-stat"><b id="admin-stat-messages">—</b><span class="admin-small">Meddelanden</span></div></div><div id="admin-refresh-status" class="admin-small" aria-live="polite"></div><div id="admin-users" class="admin-list"></div></div>
+      <div class="admin-panel"><div id="admin-user-title"><b>Ingen användare vald</b></div><div id="admin-user-meta" class="admin-small" style="margin:5px 0 10px">Klicka på en person för att öppna deras chattvy.</div><div class="admin-small">Du skickas till en separat läsvy där du kan byta mellan de grupper personen har skrivit i. Du kan inte skicka något i deras namn.</div><div class="admin-actions"><button id="admin-remove-user" class="btn danger" type="button" disabled>🗑️ Ta bort användare</button></div><div class="admin-small">Tar bort användarens sparade medlemskap, sessioner, modereringsposter och meddelanden. Personen kan senare välja samma namn igen.</div></div>
     </div>
     <div class="admin-panel" style="margin-top:14px"><b>🛡️ Gruppmoderering</b><div class="admin-small" style="margin-top:6px">Timeout, kick och återställning sköts av respektive gruppägare i <b>Gruppinfo</b>. Adminpanelen kan inte återställa kickade personer.</div></div>
   </div>
@@ -158,7 +159,8 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
     <div class="info-row"><div class="info-label">Gruppens namn</div><div id="info-name" class="info-value">-</div></div>
     <div class="info-row"><div class="info-label">Rumskod</div><div id="info-code" class="info-value">-</div></div>
     <div class="info-row"><div class="info-label">Online just nu</div><div id="info-online" class="info-value">0</div></div>
-    <div class="info-row"><div class="info-label">Medlemmar online</div><div id="info-members" class="info-value">-</div></div>
+    <div class="info-row"><div class="info-label">Medlemmar i gruppen</div><div class="info-value"><button id="member-count-button" class="member-count-button" type="button">0 medlemmar · Visa alla</button></div></div><div class="info-row"><div class="info-label">Medlemmar online</div><div id="info-members" class="info-value">-</div></div>
+    <div class="info-row"><div class="info-label">Medlemmar offline</div><div id="info-offline-members" class="info-value offline-list">-</div></div>
     <div class="info-row"><div class="info-label">Om gruppen</div><div id="info-description" class="info-value">Ingen beskrivning.</div></div>
     <div class="info-row"><div class="info-label">📊 Gruppstatistik</div><div class="stats-grid"><div class="stat-card"><div id="stat-messages" class="stat-number">-</div><div class="stat-label">Meddelanden</div></div><div class="stat-card"><div id="stat-images" class="stat-number">-</div><div class="stat-label">Bilder</div></div><div class="stat-card"><div id="stat-writers" class="stat-number">-</div><div class="stat-label">Personer som skrivit</div></div><div class="stat-card"><div id="stat-created" class="stat-number" style="font-size:14px">-</div><div class="stat-label">Skapad</div></div></div></div>
     <div class="info-row" id="group-owner-customize" hidden><div class="info-label">🎨 Anpassa grupp</div><div class="admin-small" style="margin-bottom:8px">Som gruppägare kan du ändra namn, ikon, färg, beskrivning och bakgrund.</div><button id="customize-group-btn" class="btn secondary" type="button">🎨 Anpassa grupp</button></div>
@@ -166,6 +168,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
   </div>
 </div>
 
+<div id="members-modal" class="members-modal" hidden><div class="members-card"><div class="group-info-head"><h3>Gruppens medlemmar</h3><button id="members-modal-close" class="group-info-close" type="button">✕</button></div><div id="members-list"></div></div></div>
 <div id="group-customize-modal" class="group-customize-modal" hidden>
   <div class="group-customize-card">
     <div class="group-customize-head"><h3>🎨 Anpassa grupp</h3><button id="group-customize-close" class="settings-close" type="button">✕</button></div>
@@ -199,7 +202,7 @@ const db=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 let username=localStorage.getItem('gc_username')||'';
 let nameLocked=localStorage.getItem('gc_name_locked')==='1';
-const NAME_CHANGE_CODE='GRUPPCHAT-ÄNDRA-NAMN-2026';
+const NAME_CHANGE_CODE='Dallas00';
 let rooms=JSON.parse(localStorage.getItem('gc_rooms')||'[]');
 let current=null, channel=null, presenceTimer=null;
 let unread=JSON.parse(localStorage.getItem('gc_unread')||'{}');
@@ -213,6 +216,7 @@ let moderationChannel=null;
 let moderationBlocked=false;
 let sessionTimer=null;
 let roomColorMap={};
+let presenceTracked=false;
 const clientId=localStorage.getItem('gc_client_id')||crypto.randomUUID();
 localStorage.setItem('gc_client_id',clientId);
 
@@ -260,7 +264,7 @@ function applyGroupAppearance(room){
  if(chat){chat.style.backgroundImage='none';}
 }
 function openCustomizeGroup(){
- if(!current||current.owner_username!==username)return alert('Bara gruppägaren kan anpassa gruppen.');
+ if(!current||!isGroupOwner())return alert('Bara gruppägaren kan anpassa gruppen.');
  $('customize-name').value=current.name||'';$('customize-icon').value=current.icon||'💬';$('customize-color').value=current.accent_color||'#6c5ce7';$('customize-color-value').textContent=current.accent_color||'#6c5ce7';$('customize-description').value=current.description||'';
  $('customize-icon-preview').textContent=current.icon||'💬';$('customize-name-preview').textContent=current.name||'Grupp';$('customize-icon-preview').style.background=current.accent_color||'#6c5ce7';
  const prev=$('customize-background-preview');prev.style.backgroundImage=current.background_image?`url("${current.background_image}")`:'';prev.textContent=current.background_image?'':'Ingen bakgrund vald';
@@ -307,12 +311,12 @@ $('bg-crop-close')?.addEventListener('click',closeBgCrop);$('bg-crop-cancel')?.a
 $('bg-crop-modal')?.addEventListener('click',e=>{if(e.target.id==='bg-crop-modal')closeBgCrop();});
 $('bg-crop-save')?.addEventListener('click',async()=>{try{const blob=await cropBackgroundToBlob();const f=new File([blob],'group-background.jpg',{type:'image/jpeg'});bgCropFile=f;const p=$('customize-background-preview');const u=URL.createObjectURL(blob);p.style.backgroundImage=`url("${u}")`;p.textContent='';p.dataset.cropped='1';closeBgCrop(false);}catch(e){alert(e.message||'Kunde inte beskära bilden.')}});
 async function saveCustomizeGroup(){
- if(!current||current.owner_username!==username)return alert('Bara gruppägaren kan ändra gruppen.');
+ if(!current||!isGroupOwner())return alert('Bara gruppägaren kan ändra gruppen.');
  const name=$('customize-name').value.trim()||'Grupp';const icon=$('customize-icon').value.trim()||'💬';const color=$('customize-color').value||'#6c5ce7';const description=$('customize-description').value.trim();
  let background=current.background_image||null;const file=bgCropFile||$('customize-background').files[0];
  try{
   if(file){if(file.size>8*1024*1024)throw new Error('Bakgrundsbilden är för stor. Max 8 MB.');const path=current.id+'/group-background-'+crypto.randomUUID()+'-'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const up=await db.storage.from('chat-images').upload(path,file,{contentType:file.type,upsert:false});if(up.error)throw up.error;background=db.storage.from('chat-images').getPublicUrl(path).data.publicUrl;await new Promise((resolve,reject)=>{const test=new Image();test.onload=resolve;test.onerror=()=>reject(new Error('Bakgrundsbilden laddades upp men kan inte läsas från Supabase. Kontrollera att bucket chat-images är PUBLIC.'));test.src=background+'?check='+Date.now();});}
-  const {data,error}=await db.from('rooms').update({name,icon,accent_color:color,description,background_image:background}).eq('id',current.id).eq('owner_username',username).select().single();
+  const {data,error}=await db.from('rooms').update({name,icon,accent_color:color,description,background_image:background}).eq('id',current.id).select().single();
   if(error)throw error;current=data;const i=rooms.findIndex(r=>r.id===current.id);if(i>=0){rooms[i]=current;saveRooms();}renderSavedChats();renderRoomTabs();applyGroupAppearance(current);renderGroupInfoOwnerTools();$('info-name').textContent=current.name||'-';$('info-description').textContent=current.description||'Ingen beskrivning.';$('group-customize-modal').hidden=true;
  }catch(e){alert('Kunde inte spara gruppinställningarna: '+(e.message||e));}
 }
@@ -320,7 +324,7 @@ $('customize-color')?.addEventListener('input',e=>{$('customize-color-value').te
 $('customize-name')?.addEventListener('input',e=>$('customize-name-preview').textContent=e.target.value||'Grupp');
 $('customize-icon')?.addEventListener('input',e=>$('customize-icon-preview').textContent=e.target.value||'💬');
 $('customize-background')?.addEventListener('change',e=>{const f=e.target.files[0];if(f)openBgCrop(f);});
-$('customize-remove-bg')?.addEventListener('click',async()=>{if(!current||current.owner_username!==username)return;try{const {data,error}=await db.from('rooms').update({background_image:null}).eq('id',current.id).eq('owner_username',username).select().single();if(error)throw error;current=data;const i=rooms.findIndex(r=>r.id===current.id);if(i>=0)rooms[i]=current;saveRooms();applyGroupAppearance(current);$('customize-background-preview').style.backgroundImage='';$('customize-background-preview').textContent='Ingen bakgrund vald';}catch(e){alert('Kunde inte ta bort bakgrunden: '+e.message)}});
+$('customize-remove-bg')?.addEventListener('click',async()=>{if(!current||!isGroupOwner())return;try{const {data,error}=await db.from('rooms').update({background_image:null}).eq('id',current.id).select().single();if(error)throw error;current=data;const i=rooms.findIndex(r=>r.id===current.id);if(i>=0)rooms[i]=current;saveRooms();applyGroupAppearance(current);$('customize-background-preview').style.backgroundImage='';$('customize-background-preview').textContent='Ingen bakgrund vald';}catch(e){alert('Kunde inte ta bort bakgrunden: '+e.message)}});
 $('customize-save')?.addEventListener('click',saveCustomizeGroup);$('group-customize-close')?.addEventListener('click',closeCustomizeGroup);$('group-customize-modal')?.addEventListener('click',e=>{if(e.target.id==='group-customize-modal')closeCustomizeGroup()});
 
 async function adminLogin(){
@@ -351,6 +355,7 @@ async function fetchAllMessages(filters={}){
 }
 async function refreshAdminPanel(){
  if(!adminUnlocked)return;
+ const status=$('admin-refresh-status');if(status)status.textContent='Hämtar senaste uppgifter…';
  const [{data:sessionData,error:sessionError},messageRows]=await Promise.all([
   db.from('user_sessions').select('username,last_seen,room_id').order('last_seen',{ascending:false}),
   fetchAllMessages()
@@ -362,13 +367,21 @@ async function refreshAdminPanel(){
  const allRoomIds=[...new Set([...usersMap.values()].flatMap(u=>[...u.rooms]).filter(Boolean))];let roomMap={};
  if(allRoomIds.length){for(let i=0;i<allRoomIds.length;i+=500){const rr=await db.from('rooms').select('id,name').in('id',allRoomIds.slice(i,i+500));(rr.data||[]).forEach(r=>roomMap[r.id]=r)}}
  const users=[...usersMap.values()].sort((a,b)=>String(a.username).localeCompare(String(b.username),'sv'));
- $('admin-users').innerHTML=users.length?users.map(u=>{const names=[...u.rooms].map(id=>roomMap[id]?.name).filter(Boolean);return `<button class="admin-user" data-admin-user="${esc(u.username)}"><b>${esc(u.username)}</b><br><span class="admin-small">${names.length?esc(names.slice(0,3).join(', '))+(names.length>3?' …':''):'Inga grupper'}<br>Senast aktiv: ${u.last_seen?fmt(u.last_seen):'-'}</span></button>`}).join(''):'<div class="admin-small">Inga användare hittades ännu.</div>';
+ $('admin-stat-users').textContent=users.length; $('admin-stat-groups').textContent=Object.keys(roomMap).length; $('admin-stat-messages').textContent=messageRows.length;
+ $('admin-users').innerHTML=users.length?users.map(u=>{const names=[...u.rooms].map(id=>roomMap[id]?.name).filter(Boolean);return `<div class="admin-user-row"><button class="admin-user" data-admin-user="${esc(u.username)}" type="button"><b>${esc(u.username)}</b><br><span class="admin-small">${names.length?esc(names.slice(0,3).join(', '))+(names.length>3?' …':''):'Inga grupper'}<br>Senast aktiv: ${u.last_seen?fmt(u.last_seen):'-'}</span></button><button class="admin-user-delete" data-delete-user="${esc(u.username)}" type="button" title="Ta bort ${esc(u.username)}" aria-label="Ta bort ${esc(u.username)}">🗑️</button></div>`}).join(''):'<div class="admin-small">Inga användare hittades ännu.</div>';
  $('admin-users').querySelectorAll('[data-admin-user]').forEach(b=>b.onclick=()=>openAdminUserViewer(b.dataset.adminUser).catch(e=>alert(e.message)));
+ $('admin-users').querySelectorAll('[data-delete-user]').forEach(b=>b.onclick=()=>{adminSelectedUser=b.dataset.deleteUser;adminRemoveSelectedUser().catch(e=>alert(e.message));});
+ applyAdminUserFilter();if(status)status.textContent='Uppdaterad '+new Date().toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})+' · '+users.length+' användare hittades.';
  const {data:control}=await db.from('app_control').select('*').eq('id',1).maybeSingle();
  const locked=!!control?.locked;$('admin-lock-status').textContent=locked?'⛔ Chatten är pausad.':'✅ Chatten är igång.';
  $('admin-lock-btn').disabled=locked;$('admin-unlock-btn').disabled=!locked;
 }
+function applyAdminUserFilter(){
+ const q=String($('admin-user-search')?.value||'').trim().toLocaleLowerCase('sv');
+ $('admin-users')?.querySelectorAll('[data-admin-user]').forEach(b=>{b.hidden=!b.dataset.adminUser.toLocaleLowerCase('sv').includes(q)});
+}
 let adminViewer={username:null,rooms:[],currentRoomId:null};
+let adminSelectedUser=null;
 async function openAdminUserViewer(name){
  if(!adminUnlocked)throw new Error('Adminpanelen är låst.');
  const msgs=await fetchAllMessages({username:name});
@@ -377,6 +390,7 @@ async function openAdminUserViewer(name){
  const roomRows=[];for(let i=0;i<roomIds.length;i+=500){const r=await db.from('rooms').select('id,name,code').in('id',roomIds.slice(i,i+500));if(r.error)throw r.error;roomRows.push(...(r.data||[]));}
  const roomMap={};roomRows.forEach(r=>roomMap[r.id]=r);
  adminViewer={username:name,rooms:roomIds.map(id=>roomMap[id]).filter(Boolean).sort((a,b)=>String(a.name||a.code).localeCompare(String(b.name||b.code),'sv')),currentRoomId:null};
+ adminSelectedUser=name;const removeBtn=$('admin-remove-user');if(removeBtn)removeBtn.disabled=false;
  $('admin-user-title').innerHTML='<b>'+esc(name)+'</b>';
  $('admin-user-meta').textContent=`${msgs.length} meddelanden i ${adminViewer.rooms.length} grupp${adminViewer.rooms.length===1?'':'er'}.`;
  $('admin-users').querySelectorAll('.admin-user').forEach(b=>b.classList.toggle('active',b.dataset.adminUser===name));
@@ -384,6 +398,19 @@ async function openAdminUserViewer(name){
  $('admin-view-sub').textContent='Läsbehörighet · du kan inte skicka under detta namn';
  $('admin-view-user').innerHTML=`<span class="dot" style="background:${userColorForRoom(adminViewer.rooms[0]?.id||'',name)}"></span><span class="name-color" style="color:${userColorForRoom(adminViewer.rooms[0]?.id||'',name)}">${esc(name)}</span>`;
  renderAdminViewerTabs();$('admin-view-modal').hidden=false;await loadAdminViewerRoom(adminViewer.rooms[0].id);
+}
+async function adminRemoveSelectedUser(){
+ if(!adminUnlocked||!adminSelectedUser)return alert('Välj en användare först.');
+ const target=adminSelectedUser;
+ if(!confirm(`Ta bort ${target} helt från den sparade användardatan?
+
+Detta tar bort personens meddelanden, sparade medlemskap och sessioner. Personen kan senare välja samma namn igen och gå med i grupper på nytt. Åtgärden kan inte ångras.`))return;
+ const {data,error}=await db.rpc('admin_remove_user',{p_password:adminPassword,p_username:target});
+ if(error)throw new Error('Kunde inte ta bort användaren. Kör den nya SQL-filen i Supabase först. '+error.message);
+ if(!data)throw new Error('Adminlösenordet godkändes inte eller borttagningen misslyckades.');
+ adminSelectedUser=null;const rb=$('admin-remove-user');if(rb)rb.disabled=true;
+ $('admin-user-title').innerHTML='<b>Ingen användare vald</b>';$('admin-user-meta').textContent='Användaren har tagits bort.';$('admin-view-modal').hidden=true;
+ await refreshAdminPanel();alert(`${target} har tagits bort från sparad användardata.`);
 }
 function adminViewerColor(roomId,name){return userColorForRoom(roomId,name)}
 function userColorForRoom(roomId,name){const h=hashColorKey((roomId||'')+'|'+(name||''))%360;return `hsl(${h} 72% 62%)`}
@@ -417,7 +444,7 @@ async function refreshGlobalLock(){
  const {data,error}=await db.from('app_control').select('*').eq('id',1).maybeSingle();
  if(error||!data)return;
  if(data.locked&&!adminUnlocked){
-  if(channel)await db.removeChannel(channel);channel=null;current=null;
+  if(channel)await db.removeChannel(channel);channel=null;presenceTracked=false;current=null;
   $('chat-screen').classList.remove('active');$('join-screen').classList.add('active');
   $('lock-message').textContent=data.message||'Gruppchat är tillfälligt pausad.';$('lock-screen').hidden=false;
  }else if(!data.locked){$('lock-screen').hidden=true;}
@@ -458,7 +485,7 @@ function clearModerationUI(){
 async function leaveCurrentRoomToHome(){
  if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}
  if(channel){await db.removeChannel(channel).catch(()=>{});channel=null;}
- current=null;clearModerationUI();$('chat-screen').classList.remove('active');$('join-screen').classList.add('active');renderRoomTabs();
+ current=null;touchSession().catch(()=>{});clearModerationUI();$('chat-screen').classList.remove('active');$('join-screen').classList.add('active');renderRoomTabs();
 }
 function showModerationScreen(mod){
  moderationBlocked=true;
@@ -503,7 +530,7 @@ async function setupModerationChannel(){
 }
 async function moderateMember(roomId,name,action){
  if(!current||current.id!==roomId)return;
- const isOwner=current.owner_username===username;
+ const isOwner=isGroupOwner();
  if(!isOwner)return alert('Bara gruppägaren kan moderera medlemmar.');
  if(name===username)return;
  if(action==='restore'){
@@ -526,14 +553,14 @@ async function getModerationStatus(roomId,name){
 }
 async function refreshOwnerMembers(){
  if(!current)return;
- const owner=current.owner_username===username;
+ const owner=isGroupOwner();
  $('owner-note').textContent=owner?'Du är ägare. Du kan timeouta, ta bort och återställa personer i gruppen.':'Du är inte ägare till den här gruppen.';
  // Adminpanelen har ingen återställningsfunktion. Moderering sköts endast av gruppägaren i Gruppinfo.
  $('admin-room-members').innerHTML=owner?'Öppna Gruppinfo för att timeouta, ta bort eller återställa medlemmar.':'Moderering hanteras av gruppägaren i Gruppinfo.';
 }
 async function renderGroupInfoOwnerTools(){
  if(!current)return;
- const owner=current.owner_username===username;
+ const owner=isGroupOwner();
  $('group-owner-tools').hidden=!owner;
  if(!owner){$('group-owner-members').innerHTML='';return;}
  const state=channel?.presenceState()||{};
@@ -545,13 +572,14 @@ async function renderGroupInfoOwnerTools(){
    if(p.username===username)return;
    const mod=latest[p.username];
    if(mod?.action==='kick') rows.push(`<div class="moderation-row"><span>${esc(p.username)} <span class="admin-small">🚫 Borttagen</span></span><span class="admin-actions"><button class="btn secondary group-mod-restore" data-user="${esc(p.username)}" type="button">↩ Återställ</button></span></div>`);
-   else rows.push(`<div class="moderation-row"><span>${esc(p.username)}${mod?.action==='timeout'?' <span class="admin-small">⏱ Timeout</span>':''}</span><span class="admin-actions"><button class="btn secondary group-mod-timeout" data-user="${esc(p.username)}" type="button">⏱ Timeout</button><button class="btn danger group-mod-kick" data-user="${esc(p.username)}" type="button">🚫 Ta bort</button></span></div>`);
+   else rows.push(`<div class="moderation-row"><span>${esc(p.username)}${isGroupOwner(p.username)?' <span class="admin-small">👑 Ägare</span>':(mod?.action==='timeout'?' <span class="admin-small">⏱ Timeout</span>':'')}</span><span class="admin-actions">${isGroupOwner(p.username)?'':`<button class="btn secondary group-make-owner" data-user="${esc(p.username)}" type="button">👑 Gör till ägare</button><button class="btn secondary group-mod-timeout" data-user="${esc(p.username)}" type="button">⏱ Timeout</button><button class="btn danger group-mod-kick" data-user="${esc(p.username)}" type="button">🚫 Ta bort</button>`}</span></div>`);
  });
  Object.values(latest).filter(m=>m.action==='kick'&&!people.some(p=>p.username===m.username)).forEach(m=>{
    rows.push(`<div class="moderation-row"><span>${esc(m.username)} <span class="admin-small">🚫 Borttagen · offline</span></span><span class="admin-actions"><button class="btn secondary group-mod-restore" data-user="${esc(m.username)}" type="button">↩ Återställ</button></span></div>`);
  });
  $('group-owner-members').innerHTML=rows.join('')||'<div class="admin-small">Ingen annan är online och inga aktiva borttagningar finns.</div>';
- $('group-owner-members').querySelectorAll('.group-mod-timeout').forEach(b=>b.onclick=()=>moderateMember(current.id,b.dataset.user,'timeout'));
+ $('group-owner-members').querySelectorAll('.group-make-owner').forEach(b=>b.onclick=async()=>{const target=b.dataset.user;if(!isGroupOwner())return alert('Bara gruppägare kan utse fler ägare.');if(!confirm(`Göra ${target} till gruppägare?`))return;try{const owners=groupOwnerNames();if(!owners.includes(target))owners.push(target);const {data,error}=await db.from('rooms').update({owner_usernames:owners}).eq('id',current.id).select().single();if(error)throw error;current=data;const i=rooms.findIndex(r=>r.id===current.id);if(i>=0){rooms[i]=data;saveRooms();}await renderGroupInfoOwnerTools();alert(`${target} är nu gruppägare.`);}catch(e){alert('Kunde inte lägga till gruppägare. Kontrollera att du kört SQL-filen: '+(e.message||e));}});
+  $('group-owner-members').querySelectorAll('.group-mod-timeout').forEach(b=>b.onclick=()=>moderateMember(current.id,b.dataset.user,'timeout'));
  $('group-owner-members').querySelectorAll('.group-mod-kick').forEach(b=>b.onclick=()=>moderateMember(current.id,b.dataset.user,'kick'));
  $('group-owner-members').querySelectorAll('.group-mod-restore').forEach(b=>b.onclick=()=>moderateMember(current.id,b.dataset.user,'restore'));
 }
@@ -586,15 +614,16 @@ function addRoom(r){if(!rooms.some(x=>x.id===r.id)){rooms.push(r);saveRooms();st
 async function leaveRoom(roomId){
  const room=rooms.find(r=>r.id===roomId); if(!room)return;
  if(!confirm('Lämna gruppen "'+(room.name||room.code)+'"?'))return;
- if(current&&current.id===roomId){if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}if(channel)await db.removeChannel(channel);channel=null;current=null;clearModerationUI();}
+ if(current&&current.id===roomId){if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}if(channel)await db.removeChannel(channel);channel=null;presenceTracked=false;current=null;clearModerationUI();}
  rooms=rooms.filter(r=>r.id!==roomId); saveRooms(); renderRoomTabs();
+ if(!current)touchSession().catch(()=>{});
  $('chat-screen').classList.remove('active'); $('join-screen').classList.add('active');
 }
 async function showAllChats(){
  if(roomSettingsChannel){await db.removeChannel(roomSettingsChannel).catch(()=>{});roomSettingsChannel=null;}
  if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}
  if(channel)await db.removeChannel(channel);
- channel=null; current=null;
+ channel=null; current=null;touchSession().catch(()=>{});
  $('chat-screen').classList.remove('active'); $('join-screen').classList.add('active');
  clearErr(); renderSavedChats();
 }
@@ -653,21 +682,26 @@ async function openRoom(room){
  room=latestRoom;
  const mod=await checkModeration(room.id,username);if(mod?.blocked)throw new Error(mod.reason);
  current=room;
+ // Registrera medlemskapet permanent så listan även visar personer som inte är online.
+ try {
+   const {error:memberError}=await db.from('room_members').upsert({room_id:room.id,username:username},{onConflict:'room_id,username',ignoreDuplicates:true});
+   if(memberError)console.warn('Kunde inte spara medlemskapet:',memberError.message);
+ } catch(memberError) { console.warn('Kunde inte spara medlemskapet:',memberError); }
  await watchRoomSettings();clearUnread(room.id);addRoom(room);renderRoomTabs();applyGroupAppearance(room);
  await startNotificationChannels();
  $('join-screen').classList.remove('active');$('chat-screen').classList.add('active');
  $('title').textContent=room.name||'Grupp';$('code').textContent='••••••';$('copy').classList.add('code-hidden');$('input').focus();
  if(channel) await db.removeChannel(channel);
  channel=db.channel('room-'+room.id,{config:{presence:{key:clientId}}});
- channel.on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{window._messagesById=window._messagesById||{};window._messagesById[p.new.id]=p.new;if((p.new.message_channel||'chat')===activeSection)if((p.new.message_channel||'chat')===activeSection)renderMessage(p.new);});
- channel.on('postgres_changes',{event:'UPDATE',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{window._messagesById=window._messagesById||{};window._messagesById[p.new.id]=p.new;const old=findMessage(p.new.id);if(old)old.remove();if(!(p.new.deleted&&((p.new.message_channel||'chat')==='schedule')))renderMessage(p.new);});
- channel.on('postgres_changes',{event:'DELETE',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{const old=findMessage(p.old.id);if(old)old.remove();if(window._messagesById)delete window._messagesById[p.old.id];});
+ channel.on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{window._messagesById=window._messagesById||{};window._messagesById[p.new.id]=p.new;if((p.new.message_channel||'chat')===activeSection)renderMessage(p.new);if(current&&p.new.room_id===current.id)refreshPinnedBar().catch(()=>{});});
+ channel.on('postgres_changes',{event:'UPDATE',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{window._messagesById=window._messagesById||{};window._messagesById[p.new.id]=p.new;const old=findMessage(p.new.id);if(old)old.remove();if(!(p.new.deleted&&((p.new.message_channel||'chat')==='schedule')))renderMessage(p.new);if(current&&p.new.room_id===current.id)refreshPinnedBar().catch(()=>{});});
+ channel.on('postgres_changes',{event:'DELETE',schema:'public',table:'messages',filter:'room_id=eq.'+room.id},p=>{const old=findMessage(p.old.id);if(old)old.remove();if(window._messagesById)delete window._messagesById[p.old.id];if(current)refreshPinnedBar().catch(()=>{});});
  channel.on('postgres_changes',{event:'INSERT',schema:'public',table:'room_moderation',filter:'room_id=eq.'+room.id},p=>handleModerationRow(p.new));
  channel.on('postgres_changes',{event:'UPDATE',schema:'public',table:'room_moderation',filter:'room_id=eq.'+room.id},p=>handleModerationRow(p.new));
  channel.on('presence',{event:'sync'},updatePresence);
  channel.on('presence',{event:'join'},updatePresence);
  channel.on('presence',{event:'leave'},updatePresence);
- const {error}=await channel.subscribe(async status=>{if(status==='SUBSCRIBED'){await channel.track({username,client_id:clientId})}});
+ const {error}=await channel.subscribe(async status=>{if(status==='SUBSCRIBED'){await syncRoomPresence()}});
  if(error) throw error;
  activeSection='chat';updateSectionUI();await loadSectionMessages();await updatePresence();await setupModerationChannel();const initialMod=await checkModeration(room.id,username);if(initialMod?.blocked)showModerationScreen(initialMod);else clearModerationUI();await touchSession();await refreshOwnerMembers();
 }
@@ -687,6 +721,7 @@ async function loadSectionMessages(){
  } else {
    (data||[]).forEach(renderMessage);
  }
+ refreshPinnedBar().catch(()=>{});
  scrollMessagesToBottom(false);
 }
 function hashColorKey(value){
@@ -727,17 +762,29 @@ function renderMessage(m){
  const img=(!m.deleted&&m.image)?`<img class="image ${isSchedule?'schedule-image':''}" src="${esc(m.image)}" onclick="window.open(this.src,'_blank')">`:'';
  const who=m.username===username?'Du':esc(m.username||'Okänd');
  let actions='';
+ const pinnedLabel=m.pinned&&!m.deleted?'<div class="message-pinned-label">📌 Fäst meddelande</div>':'';
  if(!m.deleted){
-   if(isSchedule && current?.owner_username===username){
+   if(isSchedule && current&&isGroupOwner()){
      actions=`<div class="msg-actions schedule-delete"><button class="msg-action delete-action" type="button">🗑 Ta bort bild</button></div>`;
    } else if(!isSchedule){
-     actions=`<div class="msg-actions"><button class="msg-action reply-action" type="button">↩ Svara</button>${m.username===username?'<button class="msg-action delete-action" type="button">🗑 Ta bort</button>':''}</div>`;
+     const canDelete=m.username===username||isGroupOwner();
+     const deleteLabel=m.username===username?'🗑 Ta bort':'🗑 Ta bort (gruppägare)';
+     actions=`<div class="msg-actions"><button class="msg-action reply-action" type="button">↩ Svara</button>${isGroupOwner()?`<button class="msg-action pin-action" type="button">${m.pinned?'📌 Lossa':'📌 Fäst'}</button>`:''}${canDelete?`<button class="msg-action delete-action" type="button">${deleteLabel}</button>`:''}</div>`;
    }
  }
- div.innerHTML=`<div class="meta"><span class="name-color" style="color:${color}">${who}</span> · ${fmt(m.created_at)}</div><div class="bubble">${replyHtml}${text}${img}</div>${actions}`;
+ div.innerHTML=`<div class="meta"><span class="name-color" style="color:${color}">${who}</span> · ${fmt(m.created_at)}</div>${pinnedLabel}<div class="bubble">${replyHtml}${text}${img}</div>${actions}`;
  div.querySelector('.reply-action')?.addEventListener('click',()=>startReply(m));
+ div.querySelector('.pin-action')?.addEventListener('click',()=>togglePinnedMessage(m));
  div.querySelector('.delete-action')?.addEventListener('click',()=>isSchedule?deleteScheduleMessage(m):deleteMessage(m));
- $('messages').appendChild(div);
+ const messageBox=$('messages');
+ // Lägg in meddelandet efter tidsordning. Vid UPDATE (t.ex. när ett meddelande lossas)
+ // renderas elementet om, men ska behålla sin ursprungliga plats i chatten.
+ const time=new Date(m.created_at||0).getTime();
+ const later=[...messageBox.querySelectorAll('.message[data-message-id]')].find(el=>{
+   const other=window._messagesById?.[el.dataset.messageId];
+   return other && new Date(other.created_at||0).getTime()>time;
+ });
+ if(later)messageBox.insertBefore(div,later);else messageBox.appendChild(div);
  if(shouldAutoScrollMessages()) scrollMessagesToBottom(false);
  else markNewMessage();
 }
@@ -767,6 +814,8 @@ $('messages')?.addEventListener('scroll',()=>{
  if(shouldAutoScrollMessages()) clearNewMessageNotice();
 });
 $('new-messages-btn')?.addEventListener('click',()=>scrollMessagesToBottom(true));
+function groupOwnerNames(room=current){const names=Array.isArray(room?.owner_usernames)?room.owner_usernames:[];if(room?.owner_username&&!names.includes(room.owner_username))names.unshift(room.owner_username);return [...new Set(names.filter(Boolean))];}
+function isGroupOwner(name=username,room=current){return groupOwnerNames(room).includes(name);}
 function renderRoomTabs(){
  const box=$('room-tabs');
  if(!box)return;
@@ -780,6 +829,27 @@ function renderRoomTabs(){
    box.appendChild(b);
  });
 }
+async function syncRoomPresence(){
+ const ch=channel;
+ if(!ch)return;
+ const shouldBeOnline=!!current && $('chat-screen')?.classList.contains('active') && !document.hidden;
+ try{
+  if(shouldBeOnline){
+   await ch.track({username,client_id:clientId});
+   presenceTracked=true;
+  }else if(presenceTracked){
+   await ch.untrack();
+   presenceTracked=false;
+  }
+ }catch(e){console.warn('Kunde inte uppdatera online-status:',e);}
+}
+document.addEventListener('visibilitychange',()=>{
+ syncRoomPresence().then(()=>updatePresence()).catch(()=>{});
+ touchSession().catch(()=>{});
+});
+window.addEventListener('focus',()=>{syncRoomPresence().then(()=>updatePresence()).catch(()=>{});});
+window.addEventListener('blur',()=>{syncRoomPresence().then(()=>updatePresence()).catch(()=>{});});
+
 async function updatePresence(){
  if(!channel)return;
  const state=channel.presenceState();const people=[];
@@ -787,7 +857,7 @@ async function updatePresence(){
  const messageNames=Object.values(window._messagesById||{}).map(m=>m.username);rebuildRoomColors([...people.map(p=>p.username),...messageNames]);refreshRenderedColors();
  $('users').innerHTML=people.map(p=>{const c=userColor(p.username||'');return `<div class="user"><span class="dot" style="background:${c}"></span><span class="name-color" style="color:${c}">${esc(p.username)}</span>${p.client_id===clientId?' (du)':''}</div>`}).join('');
  $('count').textContent=people.length+' online';
- if(current){$('info-online').textContent=people.length;refreshOwnerMembers().catch(()=>{});renderGroupInfoOwnerTools();$('info-members').innerHTML=people.map(p=>{const c=userColor(p.username||'');return `<span class="name-color" style="color:${c}">${esc(p.username)}</span>`}).join(', ')||'Ingen';}
+ if(current){$('info-online').textContent=people.length;refreshOwnerMembers().catch(()=>{});renderGroupInfoOwnerTools();$('info-members').innerHTML=people.map(p=>{const c=userColor(p.username||'');return `<span class="name-color" style="color:${c}">${esc(p.username)}</span>`}).join(', ')||'Ingen';renderOfflineMembers().catch(()=>{});}
 }
 
 async function setupGlobalMessageChannel(){
@@ -803,6 +873,41 @@ async function setupGlobalMessageChannel(){
  const {error}=await globalMessageChannel.subscribe();
  if(error)console.warn('Kunde inte aktivera olästa meddelanden',error);
 }
+async function renderOfflineMembers(){
+ const box=$('info-offline-members');if(!box||!current)return;
+ try{
+  const names=await loadMemberNames();
+  if(!current)return;
+  const state=channel?.presenceState()||{};const online=new Set();
+  Object.values(state).flat().forEach(p=>{if(p.username)online.add(p.username)});
+  const offline=names.filter(n=>!online.has(n)).sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
+  box.textContent=offline.join(', ')||'Ingen är offline';
+ }catch(e){box.textContent='Kör medlems-SQL för att visa offline-listan.';}
+}
+async function refreshPinnedBar(){
+ const bar=$('pinned-bar');if(!bar)return;
+ if(!current||activeSection!=='chat'){bar.hidden=true;bar.innerHTML='';return;}
+ const roomId=current.id;
+ const {data,error}=await db.from('messages').select('id,username,text,image,created_at,pinned,deleted,message_channel').eq('room_id',roomId).eq('pinned',true).eq('deleted',false).eq('message_channel','chat').order('created_at',{ascending:true}).limit(10);
+ if(error){console.warn('Kunde inte läsa fästa meddelanden:',error.message);return;}
+ if(!current||current.id!==roomId)return;
+ const rows=data||[];
+ if(!rows.length){bar.hidden=true;bar.innerHTML='';return;}
+ bar.hidden=false;
+ bar.innerHTML='<div class="pinned-head">📌 FÄSTA MEDDELANDEN</div>'+rows.map(m=>`<div class="pinned-item"><button class="pinned-jump" type="button" data-id="${esc(m.id)}" title="Visa meddelandet">${esc(m.username||'Medlem')}: ${esc(m.image&&!m.text?'🖼️ Bild':(m.text||'Bild'))}</button>${isGroupOwner()?`<button class="pinned-unpin" type="button" data-unpin="${esc(m.id)}">Lossa</button>`:''}</div>`).join('');
+ bar.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>{const target=document.querySelector(`[data-message-id="${CSS.escape(b.dataset.id)}"]`);if(target){target.scrollIntoView({behavior:'smooth',block:'center'});target.classList.add('flash-pinned');setTimeout(()=>target.classList.remove('flash-pinned'),1600);}else alert('Meddelandet finns inte i den här vyn.');});
+ bar.querySelectorAll('[data-unpin]').forEach(b=>b.onclick=()=>setPinnedMessage(b.dataset.unpin,false));
+}
+async function setPinnedMessage(id,pinned){
+ if(!current||!isGroupOwner())return alert('Bara gruppägare kan fästa meddelanden.');
+ const {error}=await db.from('messages').update({pinned}).eq('id',id).eq('room_id',current.id);
+ if(error){alert('Kunde inte ändra fäst meddelande. Kontrollera att du kört SQL-filen: '+error.message);return;}
+ await refreshPinnedBar();
+}
+async function togglePinnedMessage(m){
+ if(!current||!isGroupOwner())return;
+ await setPinnedMessage(m.id,!m.pinned);
+}
 async function loadGroupStats(){
  if(!current)return;
  $('stat-messages').textContent='…';$('stat-images').textContent='…';$('stat-writers').textContent='…';$('stat-created').textContent=current.created_at?new Date(current.created_at).toLocaleDateString('sv-SE'):'-';
@@ -812,18 +917,51 @@ async function loadGroupStats(){
   $('stat-messages').textContent=rows.length.toLocaleString('sv-SE');$('stat-images').textContent=rows.filter(m=>m.image&&!m.deleted).length.toLocaleString('sv-SE');$('stat-writers').textContent=writers.size.toLocaleString('sv-SE');
  }catch(e){$('stat-messages').textContent='-';$('stat-images').textContent='-';$('stat-writers').textContent='-';}
 }
+async function loadMemberNames(){
+ if(!current)return [];
+ const names=new Set(groupOwnerNames());
+ // Den permanenta tabellen är källan till medlemmar som tidigare gått med.
+ const {data:memberRows,error:memberError}=await db.from('room_members').select('username').eq('room_id',current.id);
+ if(memberError)throw memberError;
+ (memberRows||[]).forEach(m=>{if(m.username&&!m.username.startsWith('__'))names.add(m.username)});
+ // Ta även med äldre medlemmar från meddelanden och personer som är online.
+ const state=channel?.presenceState()||{};
+ Object.values(state).flat().forEach(p=>{if(p.username&&!p.username.startsWith('__'))names.add(p.username)});
+ const {data:messageRows,error:messageError}=await db.from('messages').select('username').eq('room_id',current.id).not('username','is',null);
+ if(messageError)throw messageError;
+ (messageRows||[]).forEach(m=>{if(m.username&&!m.username.startsWith('__'))names.add(m.username)});
+ return [...names];
+}
+async function openMembersCount(){
+ if(!current)return;
+ try{const names=await loadMemberNames();$('member-count-button').textContent=`${names.length} medlemmar · Visa alla`;}
+ catch(e){$('member-count-button').textContent='Kunde inte läsa medlemmar';console.warn('Kunde inte läsa medlemmar:',e.message||e);}
+}
+async function openMembersModal(){
+ if(!current)return;
+ const box=$('members-list');box.innerHTML='<div class="admin-small">Laddar medlemmar…</div>';$('members-modal').hidden=false;
+ try{
+  const names=await loadMemberNames();const owners=groupOwnerNames();
+  const sorted=names.sort((a,b)=>{const ao=owners.includes(a),bo=owners.includes(b);return ao===bo?a.localeCompare(b,'sv',{sensitivity:'base'}):(ao?-1:1)});
+  $('member-count-button').textContent=`${sorted.length} medlemmar · Visa alla`;
+  box.innerHTML=sorted.map(n=>`<div class="members-row"><span>${esc(n)}</span>${owners.includes(n)?'<span class="member-role">👑 Gruppägare</span>':''}</div>`).join('')||'<div class="admin-small">Inga medlemmar hittades.</div>';
+ }catch(e){box.innerHTML='<div class="admin-small">Kunde inte ladda medlemslistan. Kontrollera att du kört medlems-SQL i Supabase.</div>';console.warn(e);}
+}
 function openGroupInfo(){
  if(!current)return;
- $('info-name').textContent=current.name||'Grupp';$('info-code').textContent=current.code;$('info-online').textContent=$('count').textContent.replace(' online','');$('info-description').textContent=current.description||'Ingen beskrivning.';const owner=current.owner_username===username;$('group-owner-customize').hidden=!owner;const people=[...$('users').querySelectorAll('.name-color')].map(x=>x.textContent);$('info-members').textContent=people.join(', ')||'Ingen';loadGroupStats().catch(()=>{});renderGroupInfoOwnerTools();$('group-info').hidden=false;
+ $('info-name').textContent=current.name||'Grupp';$('info-code').textContent=current.code;$('info-online').textContent=$('count').textContent.replace(' online','');$('info-description').textContent=current.description||'Ingen beskrivning.';const owner=isGroupOwner();$('group-owner-customize').hidden=!owner;const people=[...$('users').querySelectorAll('.name-color')].map(x=>x.textContent);$('info-members').textContent=people.join(', ')||'Ingen';openMembersCount().catch(()=>{});renderOfflineMembers().catch(()=>{});loadGroupStats().catch(()=>{});renderGroupInfoOwnerTools();$('group-info').hidden=false;
 }
 $('moderation-home').onclick=()=>leaveCurrentRoomToHome();
-$('group-info-btn').onclick=openGroupInfo;$('customize-group-btn').onclick=openCustomizeGroup;
+$('group-info-btn').onclick=openGroupInfo;$('customize-group-btn').onclick=openCustomizeGroup;$('member-count-button').onclick=openMembersModal;$('members-modal-close').onclick=()=>{$('members-modal').hidden=true};$('members-modal').onclick=e=>{if(e.target.id==='members-modal')$('members-modal').hidden=true};
 $('group-info-close').onclick=()=>{$('group-info').hidden=true};
 $('group-info').onclick=e=>{if(e.target.id==='group-info')$('group-info').hidden=true};
 $('copy').addEventListener('mouseenter',()=>{if(current){$('code').textContent=current.code;$('copy').classList.remove('code-hidden')}});
 $('copy').addEventListener('mouseleave',()=>{if(current){$('code').textContent='••••••';$('copy').classList.add('code-hidden')}});
 $('settings-btn').onclick=showSettings;
 $('admin-open-btn').onclick=openAdminPanel;
+$('admin-refresh-users').onclick=()=>refreshAdminPanel().catch(e=>{const s=$('admin-refresh-status');if(s)s.textContent='Kunde inte uppdatera: '+e.message;});
+$('admin-user-search').addEventListener('input',applyAdminUserFilter);
+$('admin-remove-user').onclick=()=>adminRemoveSelectedUser().catch(e=>alert(e.message));
 $('lock-admin-btn').onclick=async()=>{try{if(await adminLogin()){ $('lock-screen').hidden=true;$('admin-modal').hidden=false;await refreshAdminPanel();}}catch(e){alert(e.message)}};
 $('admin-close').onclick=()=>{$('admin-modal').hidden=true};
 $('admin-modal').onclick=e=>{if(e.target.id==='admin-modal')$('admin-modal').hidden=true};
@@ -866,15 +1004,20 @@ function startReply(m){
 }
 function cancelReply(){replyingTo=null;$('replying').hidden=true;$('replying-name').textContent='';}
 async function deleteMessage(m){
- if(m.username!==username)return;
- if(!confirm('Ta bort ditt meddelande?'))return;
- const {error}=await db.from('messages').update({deleted:true,text:'',image:null}).eq('id',m.id).eq('username',username);
+ const ownMessage=m.username===username;
+ const ownerDelete=isGroupOwner();
+ if(!ownMessage&&!ownerDelete)return;
+ const promptText=ownMessage?'Ta bort ditt meddelande?':`Ta bort ${m.username||'medlemmens'} meddelande?`;
+ if(!confirm(promptText))return;
+ let query=db.from('messages').update({deleted:true,text:'',image:null}).eq('id',m.id).eq('room_id',current.id);
+ if(ownMessage)query=query.eq('username',username);
+ const {error}=await query;
  if(error)err('Kunde inte ta bort meddelandet: '+error.message);
 }
 $('cancel-reply').onclick=cancelReply;
 
 async function deleteScheduleMessage(m){
- if(!current||activeSection!=='schedule'||current.owner_username!==username)return;
+ if(!current||activeSection!=='schedule'||!isGroupOwner())return;
  if(!confirm('Ta bort den här bilden från schemat?'))return;
  // Använd UPDATE i stället för DELETE. Den befintliga messages-update-policyn
  // fungerar för anon-klienter, medan en separat DELETE-policy annars krävs.
@@ -931,7 +1074,7 @@ $('file').onchange=async()=>{
 };
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(current.code);$('copy').textContent='Kopierad!';setTimeout(()=>$('copy').innerHTML='Kod <b id="code">'+current.code+'</b>',1200)}catch{}};
 $('fullscreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch{}};
-$('back').onclick=async()=>{if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}if(channel)await db.removeChannel(channel);channel=null;current=null;$('chat-screen').classList.remove('active');$('join-screen').classList.add('active');renderRoomTabs()};
+$('back').onclick=async()=>{if(moderationChannel){await db.removeChannel(moderationChannel).catch(()=>{});moderationChannel=null;}if(channel)await db.removeChannel(channel);channel=null;presenceTracked=false;current=null;touchSession().catch(()=>{});$('chat-screen').classList.remove('active');$('join-screen').classList.add('active');renderRoomTabs()};
 async function shareCurrentGroup(){
  if(!current)return;
  const url=new URL(location.href);
