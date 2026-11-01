@@ -76,12 +76,12 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 @media(max-width:760px){.admin-grid{grid-template-columns:1fr}.admin-card{padding:14px}}
 .background-upload,.background-preview,#group-background,#bg-file,#background-file{display:none!important}
 .offline-list{font-size:13px;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}.pinned-bar{flex-shrink:0;padding:8px 12px;background:color-mix(in srgb,var(--group-accent,#6c5ce7) 18%,var(--surface));border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:5px}.pinned-bar[hidden]{display:none!important}.pinned-head{font-size:12px;font-weight:800;color:var(--primary)}.pinned-item{display:flex;align-items:center;gap:8px;min-width:0}.pinned-jump{flex:1;min-width:0;text-align:left;border:0;background:transparent;color:var(--text);font:inherit;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;padding:2px}.pinned-unpin{border:1px solid var(--border);border-radius:7px;background:var(--surface);color:var(--text);padding:3px 7px;cursor:pointer;font-size:12px}.message-pinned-label{font-size:11px;font-weight:700;color:var(--primary);margin-bottom:4px}.msg-action.pin-action{color:var(--primary)}.message.flash-pinned{outline:2px solid var(--primary);outline-offset:3px}.member-count-button{border:0;background:transparent;color:var(--primary);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:0}.members-modal{position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;padding:16px;z-index:80}.members-modal[hidden]{display:none!important}.members-card{width:min(420px,100%);max-height:85vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px}.members-row{display:flex;align-items:center;gap:9px;padding:9px 4px;border-bottom:1px solid var(--border)}.member-role{margin-left:auto;font-size:12px;color:var(--primary);font-weight:700}
-.app-version{display:inline-block;margin-top:8px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.02em}.app-version-header{margin:0 0 0 6px;white-space:nowrap}.header-left{flex-wrap:wrap}@media(max-width:600px){.app-version-header{font-size:10px;padding:2px 5px}}\n</style></head>
+.app-version{display:inline-block;margin-top:8px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.02em}.app-version-header{margin:0 0 0 6px;white-space:nowrap}.header-left{flex-wrap:wrap}@media(max-width:600px){.app-version-header{font-size:10px;padding:2px 5px}}\n.admin-view-stats{margin-top:14px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.admin-view-stats .stat-line{font-size:12px;color:var(--muted);margin:5px 0}.admin-sent-link{border:0;padding:0;background:none;color:var(--accent,#9bbcff);font:inherit;text-decoration:underline;cursor:pointer}.admin-sent-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;max-height:65vh;overflow:auto}.admin-sent-item{border:1px solid var(--border);border-radius:10px;padding:10px;background:var(--surface2)}.admin-sent-time{font-size:11px;color:var(--muted);margin-bottom:6px}\n</style></head>
 </head>
 <body>
 <section id="join-screen" class="screen active">
 <div class="card">
-<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">Version: 1.0</div></div>
+<div class="logo"><div class="logo-icon">💬</div><h1>Gruppchat</h1><div class="sub">Chatta med vänner via en kod</div><div class="app-version">Version: 1.1</div></div>
 <div class="group"><label>Ditt namn</label><input id="username" maxlength="20" placeholder="Välj ditt namn..." autocomplete="off"><div id="name-lock-hint" class="hint" style="margin-top:6px">Du väljer namnet en gång. Det kan ändras senare i ⚙️ Inställningar med en särskild kod.</div></div>
 <div class="tabs"><button class="tab active" data-tab="join">Gå med</button><button class="tab" data-tab="create">Skapa rum</button></div>
 <div id="join-tab" class="tab-content active">
@@ -99,7 +99,7 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 
 <section id="chat-screen" class="screen">
 <header class="header">
-<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">Version: 1.0</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
+<div class="header-left"><button id="back" class="icon" title="Lämna">←</button><span class="app-version app-version-header">Version: 1.1</span><div style="display:flex;align-items:center;gap:9px"><span id="group-icon" class="group-icon-mini">💬</span><div><h2 id="title">Grupp</h2><span id="count" class="online-count">0 online</span></div></div></div>
 <div id="global-announcement" class="global-announcement" role="status" aria-live="polite"><span class="announcement-label">📢 Meddelande</span><span id="global-announcement-text" class="announcement-text"></span><button id="announcement-expand" type="button" title="Visa hela meddelandet" aria-label="Visa hela meddelandet">↕</button></div><div class="header-right"><button id="group-info-btn" class="icon" title="Gruppinfo">ⓘ</button><button id="settings-btn" class="icon" title="Inställningar">⚙️</button><button id="share-group" class="btn secondary" title="Dela gruppen">🔗 Dela</button><button id="copy" class="btn secondary code-button" title="Håll musen över för att visa koden">Kod <b id="code" class="code-text">••••••</b></button><button id="fullscreen" class="icon" title="Fullskärm">⛶</button></div>
 </header>
 <nav id="room-tabs"></nav><div class="chat-actions"><button id="all-chats" class="btn secondary" type="button">← Alla chattar</button><button id="leave-group" class="btn danger" type="button">Lämna grupp</button></div>
@@ -151,11 +151,12 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
     </div>
     <nav id="admin-view-tabs" class="admin-view-tabs"></nav>
     <div class="admin-view-layout">
-      <aside class="admin-view-sidebar"><h3 style="margin:0 0 12px;font-size:13px">👁️ Visar användare</h3><div id="admin-view-user" class="user"></div><div class="admin-small" style="margin-top:12px">Här visas hela meddelandehistoriken i de grupper som personen har skrivit i.</div></aside>
+      <aside class="admin-view-sidebar"><h3 style="margin:0 0 12px;font-size:13px">👁️ Visar användare</h3><div id="admin-view-user" class="user"></div><div id="admin-view-stats" class="admin-view-stats"></div><div class="admin-small" style="margin-top:12px">Här visas hela meddelandehistoriken i de grupper som personen har skrivit i.</div></aside>
       <main class="admin-view-main"><div id="admin-view-messages" class="admin-view-messages"></div><div class="admin-view-readonly">🔒 Endast läsning · Admin kan inte skicka, svara eller ta bort meddelanden i denna vy.</div></main>
     </div>
   </div>
 </div>
+<div id="admin-sent-modal" class="admin-modal" hidden><div class="admin-card" style="width:min(760px,100%)"><div class="admin-head"><h3 id="admin-sent-title">Skickade meddelanden</h3><button id="admin-sent-close" class="settings-close" type="button">✕</button></div><div id="admin-sent-list" class="admin-sent-list"></div></div></div>
 <div id="moderation-screen" class="moderation-screen" hidden><div class="moderation-card"><div id="moderation-icon" style="font-size:42px">⏱️</div><h2 id="moderation-title">Du är timeoutad</h2><p id="moderation-message">Du kan inte skriva eller använda gruppen just nu.</p><div id="moderation-countdown" class="mod-countdown"></div><button id="moderation-home" class="btn secondary" type="button">Till startsidan</button></div></div>
 
 <div id="lock-screen" class="lock-screen" hidden><div class="lock-card"><div style="font-size:42px">⛔</div><h2>Gruppchat är pausad</h2><p id="lock-message">En administratör har tillfälligt stoppat chatten. Du kan inte använda chatten just nu.</p><div class="admin-actions" style="justify-content:center"><button id="lock-admin-btn" class="btn secondary" type="button">🛡️ Admin</button></div><div class="admin-small">Vänta tills administratören slår på chatten igen.</div></div></div>
@@ -547,12 +548,32 @@ function renderAdminViewerMessage(m,replyMap){
  div.style.setProperty('--msg-color',color);div.innerHTML=`<div class="meta"><span class="name-color" style="color:${color}">${m.username===adminViewer.username?'👤 '+esc(m.username):esc(m.username||'Okänd')}</span> · ${fmt(m.created_at)}</div><div class="bubble">${replyHtml}${text}${img}</div>`;
  return div;
 }
+async function showAdminSentMessages(){
+ const username=adminViewer.username,roomId=adminViewer.currentRoomId;
+ if(!username||!roomId)return;
+ const room=adminViewer.rooms.find(r=>r.id===roomId);
+ $('admin-sent-title').textContent=`Skickade meddelanden · ${username} · ${room?.name||'Grupp'}`;
+ $('admin-sent-list').innerHTML='<div class="admin-small">Hämtar meddelanden…</div>';
+ $('admin-sent-modal').hidden=false;
+ const {data,error}=await db.from('messages').select('id,username,text,image,created_at,deleted').eq('room_id',roomId).eq('username',username).order('created_at',{ascending:false});
+ if(error)throw error;
+ const rows=data||[];
+ $('admin-sent-list').innerHTML=rows.length?rows.map(m=>`<article class="admin-sent-item"><div class="admin-sent-time">${esc(new Date(m.created_at).toLocaleString('sv-SE',{dateStyle:'short',timeStyle:'medium'}))}</div><div>${m.deleted?'[Meddelandet har tagits bort]':esc(m.text|| (m.image?'[Bild]':'[Tomt meddelande]'))}</div></article>`).join(''):'<div class="admin-small">Inga skickade meddelanden i den här gruppen.</div>';
+}
 async function loadAdminViewerRoom(roomId){
  if(!adminViewer.username)return;adminViewer.currentRoomId=roomId;renderAdminViewerTabs();
- const room=adminViewer.rooms.find(r=>r.id===roomId);$('admin-view-user').innerHTML=`<span class="dot" style="background:${adminViewerColor(roomId,adminViewer.username)}"></span><span class="name-color" style="color:${adminViewerColor(roomId,adminViewer.username)}">${esc(adminViewer.username)}</span><div class="admin-small" style="margin-top:8px">Grupp: ${esc(room?.name||'Okänd')}</div>`;
+ const room=adminViewer.rooms.find(r=>r.id===roomId);
+ $('admin-view-user').innerHTML=`<span class="dot" style="background:${adminViewerColor(roomId,adminViewer.username)}"></span><span class="name-color" style="color:${adminViewerColor(roomId,adminViewer.username)}">${esc(adminViewer.username)}</span><div class="admin-small" style="margin-top:8px">Grupp: ${esc(room?.name||'Okänd')}</div>`;
  const {data,error}=await db.from('messages').select('*').eq('room_id',roomId).order('created_at',{ascending:true});if(error)throw error;
- const rows=data||[];const map={};rows.forEach(m=>map[m.id]=m);const box=$('admin-view-messages');box.innerHTML='';rows.forEach(m=>box.appendChild(renderAdminViewerMessage(m,map)));box.scrollTop=box.scrollHeight;
+ const rows=data||[];const own=rows.filter(m=>m.username===adminViewer.username);
+ const words=own.reduce((total,m)=>total+String(m.deleted?'':(m.text||'')).trim().split(/\s+/u).filter(Boolean).length,0);
+ const stats=$('admin-view-stats');
+ stats.innerHTML=`<b>📊 Aktivitet i gruppen</b><div class="stat-line">Ord skrivna: <b>${words.toLocaleString('sv-SE')}</b></div><div class="stat-line">Skickade meddelanden: <button class="admin-sent-link" id="admin-open-sent" type="button">${own.length}</button></div>`;
+ $('admin-open-sent').onclick=()=>showAdminSentMessages().catch(e=>alert('Kunde inte hämta meddelanden: '+e.message));
+ const map={};rows.forEach(m=>map[m.id]=m);const box=$('admin-view-messages');box.innerHTML='';rows.forEach(m=>box.appendChild(renderAdminViewerMessage(m,map)));box.scrollTop=box.scrollHeight;
 }
+$('admin-sent-close').onclick=()=>$('admin-sent-modal').hidden=true;
+$('admin-sent-modal').addEventListener('click',e=>{if(e.target===$('admin-sent-modal'))$('admin-sent-modal').hidden=true;});
 async function adminSetLock(locked){
  if(!adminUnlocked)return;
  const message=locked?(prompt('Text som ska visas för alla andra:','Gruppchat är tillfälligt pausad.')||'Gruppchat är tillfälligt pausad.'):'Gruppchat är tillfälligt pausad.';
