@@ -97,6 +97,62 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 #admin-sent-modal .admin-sent-time{font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--muted);margin-bottom:7px}
 @media(max-width:600px){#admin-sent-modal{padding:10px}#admin-sent-modal>.admin-card{max-height:90vh;border-radius:16px}#admin-sent-modal .admin-head{padding:15px}#admin-sent-modal #admin-sent-title{font-size:14px}#admin-sent-modal .admin-sent-list{padding:12px;max-height:calc(90vh - 65px)}}
 
+
+/* Gruppchat 1.2 – admin dashboard redesign */
+#admin-modal .admin-shell{width:min(1180px,96vw)!important;max-width:1180px!important;height:min(880px,92vh);max-height:92vh!important;padding:0!important;overflow:hidden!important;display:flex;flex-direction:column;border:1px solid var(--border);border-radius:20px;background:var(--surface);box-shadow:0 28px 90px rgba(0,0,0,.38)}
+#admin-modal .admin-main-head{flex:0 0 auto;margin:0!important;padding:17px 22px;border-bottom:1px solid var(--border);background:var(--surface2)}
+#admin-modal .admin-main-head h3{margin:0 0 3px;font-size:19px;font-weight:850;letter-spacing:-.02em}
+#admin-modal .admin-workspace{display:grid;grid-template-columns:218px minmax(0,1fr);min-height:0;flex:1}
+#admin-modal .admin-sidebar{display:flex;flex-direction:column;gap:5px;padding:18px 12px;background:var(--surface2);border-right:1px solid var(--border);min-height:0}
+#admin-modal .admin-sidebar-label{padding:0 11px 9px;font-size:10px;letter-spacing:.13em;font-weight:850;color:var(--muted)}
+#admin-modal .admin-nav-item{display:flex;align-items:center;gap:11px;width:100%;padding:11px 12px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--text);font:inherit;font-size:13px;font-weight:700;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+#admin-modal .admin-nav-item span{width:19px;text-align:center;font-size:16px}
+#admin-modal .admin-nav-item:hover{background:var(--surface);border-color:var(--border)}
+#admin-modal .admin-nav-item.active{background:var(--surface);border-color:var(--border);box-shadow:0 3px 12px rgba(0,0,0,.07);color:var(--primary)}
+#admin-modal .admin-sidebar-foot{margin-top:auto;padding:13px 9px 3px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px}
+#admin-modal .admin-status-dot{width:8px;height:8px;border-radius:50%;background:#27b36a;box-shadow:0 0 0 3px rgba(39,179,106,.13)}
+#admin-modal .admin-content{padding:24px;overflow:auto;min-width:0;background:var(--surface)}
+#admin-modal .admin-page{display:none;animation:adminPageIn .18s ease}
+#admin-modal .admin-page.active{display:block}
+#admin-modal .admin-page[hidden]{display:none!important}
+@keyframes adminPageIn{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+#admin-modal .admin-page-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+#admin-modal .admin-eyebrow{font-size:10px;font-weight:850;letter-spacing:.13em;color:var(--primary);margin-bottom:5px}
+#admin-modal .admin-page-heading h2{margin:0;font-size:25px;letter-spacing:-.035em}
+#admin-modal .admin-page-heading p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+#admin-modal .admin-dashboard-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 17px}
+#admin-modal .admin-dashboard-stats .admin-stat{min-height:92px;padding:17px;border:1px solid var(--border);border-radius:15px;background:var(--surface2);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;text-align:left}
+#admin-modal .admin-dashboard-stats .admin-stat>b{font-size:27px;line-height:1.1;font-weight:850;color:var(--text)}
+#admin-modal .admin-dashboard-stats .admin-stat .admin-small{font-size:11px;color:var(--muted)}
+#admin-modal .admin-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#admin-modal .admin-panel{padding:17px!important;margin:0 0 14px!important;border:1px solid var(--border);border-radius:15px;background:var(--surface2);box-shadow:0 5px 18px rgba(0,0,0,.045)}
+#admin-modal .admin-overview-grid .admin-panel{margin:0!important}
+#admin-modal .admin-panel-title{font-size:14px;font-weight:850;margin-bottom:8px;color:var(--text)}
+#admin-modal .admin-panel p{line-height:1.55}
+#admin-modal #admin-announcement-input{width:100%;resize:vertical;min-height:88px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:11px;padding:11px;font:inherit;font-size:13px;outline:none}
+#admin-modal #admin-announcement-input:focus,#admin-modal .admin-toolbar input:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 17%,transparent)}
+#admin-modal .admin-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#admin-modal .admin-actions .btn,#admin-modal .admin-page-heading>.btn{border-radius:10px;font-weight:750}
+#admin-modal .admin-user-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(240px,.85fr);gap:14px}
+#admin-modal .admin-user-grid>.admin-panel{min-width:0}
+#admin-modal .admin-toolbar{display:flex;gap:8px;margin:12px 0}
+#admin-modal .admin-toolbar input{min-width:0;flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}
+#admin-modal .admin-list{max-height:440px;overflow:auto}
+#admin-modal .admin-list>*{border-radius:10px}
+#admin-modal .admin-page .admin-small{line-height:1.5}
+@media(max-width:760px){
+ #admin-modal .admin-shell{width:100vw!important;height:100dvh;max-height:100dvh!important;border-radius:0}
+ #admin-modal .admin-workspace{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+ #admin-modal .admin-sidebar{order:0;display:flex;flex-direction:row;overflow-x:auto;gap:4px;padding:8px;border-right:0;border-bottom:1px solid var(--border)}
+ #admin-modal .admin-sidebar-label,#admin-modal .admin-sidebar-foot{display:none}
+ #admin-modal .admin-nav-item{flex:0 0 auto;width:auto;white-space:nowrap;padding:9px 11px;font-size:11px}
+ #admin-modal .admin-nav-item span{width:auto}
+ #admin-modal .admin-content{padding:16px;overflow:auto}
+ #admin-modal .admin-overview-grid,#admin-modal .admin-user-grid{grid-template-columns:1fr}
+ #admin-modal .admin-page-heading h2{font-size:22px}
+}
+@media(max-width:430px){#admin-modal .admin-dashboard-stats{gap:7px}#admin-modal .admin-dashboard-stats .admin-stat{padding:11px;min-height:78px}#admin-modal .admin-dashboard-stats .admin-stat>b{font-size:22px}#admin-modal .admin-nav-item{padding:8px 9px}}
+
 </style></head>
 </head>
 <body>
@@ -147,17 +203,116 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 </div>
 
 <div id="admin-modal" class="admin-modal" hidden>
-  <div class="admin-card">
-    <div class="admin-head"><div><h3>🛡️ Adminpanel</h3><div class="admin-small">Övervaka användare, pausa chatten och hantera grupper.</div></div><button id="admin-close" class="settings-close" type="button">✕</button></div>
-    <div class="admin-panel" style="margin-top:14px"><b>📢 Meddelande till alla</b><div class="admin-small" style="margin:6px 0 10px">Skriv ett meddelande som visas för alla användare högst upp bredvid Gruppinfo. Lämna tomt och tryck Ta bort för att dölja det.</div><textarea id="admin-announcement-input" maxlength="500" rows="3" placeholder="Skriv ett meddelande till alla…" style="width:100%;resize:vertical;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:9px;padding:10px;font:inherit"></textarea><div id="admin-announcement-status" class="admin-small" aria-live="polite" style="margin-top:6px"></div><div class="admin-actions"><button id="admin-announcement-save" class="btn" type="button">📢 Visa för alla</button><button id="admin-announcement-clear" class="btn secondary" type="button">Ta bort meddelandet</button></div></div>
-    <div class="setting" style="padding-bottom:10px"><div class="setting-title">🛑 Global stopp</div><div id="admin-lock-status" class="admin-small">Kontrollerar status…</div><div class="admin-actions"><button id="admin-lock-btn" class="btn danger" type="button">Stoppa alla andra</button><button id="admin-unlock-btn" class="btn secondary" type="button">Återgå till normalt</button></div></div>
-    <div class="admin-grid">
-      <div class="admin-panel"><b>Användare</b><div class="admin-small" style="margin:5px 0 9px">Sök efter namn, klicka på en person för att visa uppgifter eller tryck 🗑️ direkt på raden för att ta bort just den personen. Senast aktiv betyder senaste registrerade session eller meddelande – inte garanterad onlinestatus.</div><div class="admin-toolbar"><button id="admin-refresh-users" class="btn secondary" type="button">↻ Ladda om listan</button><input id="admin-user-search" type="search" placeholder="Sök användare…" aria-label="Sök användare"></div><div class="admin-stats"><div class="admin-stat"><b id="admin-stat-users">—</b><span class="admin-small">Användare</span></div><button id="admin-stat-groups-button" class="admin-stat admin-stat-button" type="button" title="Visa alla grupper"><b id="admin-stat-groups">—</b><span class="admin-small">Grupper · Visa alla</span></button><div class="admin-stat"><b id="admin-stat-messages">—</b><span class="admin-small">Meddelanden</span></div></div><div id="admin-refresh-status" class="admin-small" aria-live="polite"></div><div id="admin-users" class="admin-list"></div></div>
-      <div class="admin-panel"><div id="admin-user-title"><b>Ingen användare vald</b></div><div id="admin-user-meta" class="admin-small" style="margin:5px 0 10px">Klicka på en person för att öppna deras chattvy.</div><div class="admin-small">Du skickas till en separat läsvy där du kan byta mellan de grupper personen har skrivit i. Du kan inte skicka något i deras namn.</div><div class="admin-actions"><button id="admin-remove-user" class="btn danger" type="button" disabled>🗑️ Ta bort användare</button></div><div class="admin-small">Tar bort användarens sparade medlemskap, sessioner, modereringsposter och meddelanden. Personen kan senare välja samma namn igen.</div></div>
+  <div class="admin-card admin-shell">
+    <div class="admin-head admin-main-head">
+      <div><h3>🛡️ Gruppchat Admin</h3><div class="admin-small">Kontrollpanel · Version 1.2</div></div>
+      <button id="admin-close" class="settings-close" type="button" aria-label="Stäng adminpanelen">✕</button>
     </div>
-    <div class="admin-panel" style="margin-top:14px"><b>🛡️ Gruppmoderering</b><div class="admin-small" style="margin-top:6px">Timeout, kick och återställning sköts av respektive gruppägare i <b>Gruppinfo</b>. Adminpanelen kan inte återställa kickade personer.</div></div>
+    <div class="admin-workspace">
+      <aside class="admin-sidebar" aria-label="Adminmeny">
+        <div class="admin-sidebar-label">MENY</div>
+        <button class="admin-nav-item active" type="button" data-admin-tab="overview"><span>▦</span> Översikt</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="users"><span>♙</span> Användare</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="groups"><span>👥</span> Grupper</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="stats"><span>▤</span> Statistik</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="supabase"><span>◈</span> Supabase</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="moderation"><span>🛡</span> Moderering</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="activity"><span>◷</span> Aktivitetslogg</button>
+        <button class="admin-nav-item" type="button" data-admin-tab="settings"><span>⚙</span> Inställningar</button>
+        <div class="admin-sidebar-foot"><span class="admin-status-dot"></span> Adminläge aktivt</div>
+      </aside>
+
+      <main class="admin-content">
+        <section class="admin-page active" data-admin-page="overview">
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">KONTROLLPANEL</div><h2>Översikt</h2><p>Samlad bild av Gruppchat och snabba adminåtgärder.</p></div></div>
+          <div class="admin-stats admin-dashboard-stats">
+            <div class="admin-stat"><b id="admin-stat-users">—</b><span class="admin-small">Användare</span></div>
+            <button id="admin-stat-groups-button" class="admin-stat admin-stat-button" type="button" title="Visa alla grupper"><b id="admin-stat-groups">—</b><span class="admin-small">Grupper · Visa alla</span></button>
+            <div class="admin-stat"><b id="admin-stat-messages">—</b><span class="admin-small">Meddelanden</span></div>
+          </div>
+          <div class="admin-overview-grid">
+            <div class="admin-panel admin-feature-panel">
+              <div class="admin-panel-title">📢 Meddelande till alla</div>
+              <p class="admin-small">Skriv ett meddelande som visas för alla användare högst upp bredvid Gruppinfo. Lämna tomt och tryck Ta bort för att dölja det.</p>
+              <textarea id="admin-announcement-input" maxlength="500" rows="3" placeholder="Skriv ett meddelande till alla…"></textarea>
+              <div id="admin-announcement-status" class="admin-small" aria-live="polite"></div>
+              <div class="admin-actions"><button id="admin-announcement-save" class="btn" type="button">📢 Visa för alla</button><button id="admin-announcement-clear" class="btn secondary" type="button">Ta bort meddelandet</button></div>
+            </div>
+            <div class="admin-panel admin-feature-panel">
+              <div class="admin-panel-title">🛑 Global stopp</div>
+              <p class="admin-small">Pausa tillfälligt chatten för alla andra användare.</p>
+              <div id="admin-lock-status" class="admin-small">Kontrollerar status…</div>
+              <div class="admin-actions"><button id="admin-lock-btn" class="btn danger" type="button">Stoppa alla andra</button><button id="admin-unlock-btn" class="btn secondary" type="button">Återgå till normalt</button></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-page" data-admin-page="users" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">KONTOÖVERSIKT</div><h2>Användare</h2><p>Sök, granska och hantera användare.</p></div><button id="admin-refresh-users" class="btn secondary" type="button">↻ Ladda om listan</button></div>
+          <div id="admin-refresh-status" class="admin-small" aria-live="polite"></div>
+          <div class="admin-grid admin-user-grid">
+            <div class="admin-panel"><div class="admin-panel-title">Alla användare</div><p class="admin-small">Sök efter namn och välj en person för att visa uppgifter. Senast aktiv betyder senaste registrerade session eller meddelande – inte garanterad onlinestatus.</p><div class="admin-toolbar"><input id="admin-user-search" type="search" placeholder="Sök användare…" aria-label="Sök användare"></div><div id="admin-users" class="admin-list"></div></div>
+            <div class="admin-panel"><div id="admin-user-title"><b>Ingen användare vald</b></div><div id="admin-user-meta" class="admin-small">Klicka på en person för att öppna deras chattvy.</div><p class="admin-small">Du skickas till en separat läsvy där du kan byta mellan de grupper personen har skrivit i. Du kan inte skicka något i deras namn.</p><div class="admin-actions"><button id="admin-remove-user" class="btn danger" type="button" disabled>🗑️ Ta bort användare</button></div><p class="admin-small">Tar bort användarens sparade medlemskap, sessioner, modereringsposter och meddelanden. Personen kan senare välja samma namn igen.</p></div>
+          </div>
+        </section>
+
+        <section class="admin-page" data-admin-page="groups" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">GRUPPHANTERING</div><h2>Grupper</h2><p>Öppna gruppöversikten och se registrerade grupper.</p></div></div>
+          <div class="admin-panel admin-feature-panel"><div class="admin-panel-title">👥 Alla grupper</div><p class="admin-small">Visa gruppnamn och medlemmar i den befintliga gruppöversikten.</p><button class="btn" type="button" onclick="document.getElementById('admin-stat-groups-button').click()">Öppna grupplistan</button></div>
+        </section>
+
+        <section class="admin-page" data-admin-page="stats" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">NYCKELTAL</div><h2>Statistik</h2><p>Antal som hämtas från den befintliga datan i Gruppchat.</p></div></div>
+          <div class="admin-stats admin-dashboard-stats">
+            <div class="admin-stat"><b id="admin-stat-users-copy">—</b><span class="admin-small">Användare</span></div>
+            <div class="admin-stat"><b id="admin-stat-groups-copy">—</b><span class="admin-small">Grupper</span></div>
+            <div class="admin-stat"><b id="admin-stat-messages-copy">—</b><span class="admin-small">Meddelanden</span></div>
+          </div>
+          <div class="admin-panel"><div class="admin-panel-title">Om statistiken</div><p class="admin-small">Värdena ovan är de sammanräknade användar-, grupp- och meddelandeantal som adminpanelen redan hämtar. Inga uppskattade värden visas.</p></div>
+        </section>
+
+        <section class="admin-page" data-admin-page="supabase" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">DATABAS</div><h2>Supabase-användning</h2><p>Information om databasens resursförbrukning.</p></div></div>
+          <div class="admin-panel"><div class="admin-panel-title">◈ Användningsdata är inte tillgänglig här</div><p class="admin-small">Den här webbappen använder Supabase med klientåtkomst. Säker användningsstatistik och projektets kvoter kräver behörig åtkomst via Supabase Dashboard eller en skyddad serverfunktion. Därför visas inga påhittade siffror här.</p><p class="admin-small">Lägg aldrig in en service_role-nyckel i den här HTML-filen.</p></div>
+        </section>
+
+        <section class="admin-page" data-admin-page="moderation" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">TRYGGHET</div><h2>Moderering</h2><p>Överblick över befintliga modereringsverktyg.</p></div></div>
+          <div class="admin-panel"><div class="admin-panel-title">🛡️ Gruppmoderering</div><p class="admin-small">Timeout, kick och återställning sköts av respektive gruppägare i <b>Gruppinfo</b>. Adminpanelen kan inte återställa kickade personer.</p></div>
+          <div class="admin-panel"><div class="admin-panel-title">🛑 Global stopp</div><p class="admin-small">Den globala pausfunktionen finns på sidan Översikt.</p><button class="btn secondary" type="button" onclick="document.querySelector('[data-admin-tab=overview]').click()">Gå till översikt</button></div>
+        </section>
+
+        <section class="admin-page" data-admin-page="activity" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">HÄNDELSER</div><h2>Aktivitetslogg</h2><p>Administrativa händelser i appen.</p></div></div>
+          <div class="admin-panel"><div class="admin-panel-title">Aktivitetslogg är inte aktiverad</div><p class="admin-small">Den nuvarande databasen har ingen komplett, verifierad logg över adminåtgärder. Den här fliken visar därför ingen fabricerad historik. En riktig logg behöver en separat databastabell och säkra skrivregler.</p></div>
+        </section>
+
+        <section class="admin-page" data-admin-page="settings" hidden>
+          <div class="admin-page-heading"><div><div class="admin-eyebrow">KONFIGURATION</div><h2>Inställningar</h2><p>Information om adminpanelens inställningar.</p></div></div>
+          <div class="admin-panel"><div class="admin-panel-title">⚙ Adminåtkomst</div><p class="admin-small">Adminpanelen öppnas med den befintliga lösenordsverifieringen i Supabase. Behåll adminlösenordet privat och lägg aldrig in privilegierade databasnycklar i webbsidans kod.</p></div>
+          <div class="admin-panel"><div class="admin-panel-title">Funktioner</div><p class="admin-small">Befintliga funktioner och behörigheter är bevarade. Den här versionen ändrar adminpanelens utseende och navigation, inte databasens behörighetssystem.</p></div>
+        </section>
+      </main>
+    </div>
   </div>
 </div>
+<script>
+
+
+function syncAdminDashboardStats(){
+ const pairs=[['admin-stat-users','admin-stat-users-copy'],['admin-stat-groups','admin-stat-groups-copy'],['admin-stat-messages','admin-stat-messages-copy']];
+ pairs.forEach(([source,target])=>{const a=document.getElementById(source),b=document.getElementById(target);if(a&&b)b.textContent=a.textContent;});
+}
+
+function switchAdminTab(tab){
+ const allowed=['overview','users','groups','stats','supabase','moderation','activity','settings'];
+ if(!allowed.includes(tab))tab='overview';
+ document.querySelectorAll('#admin-modal [data-admin-tab]').forEach(b=>b.classList.toggle('active',b.dataset.adminTab===tab));
+ document.querySelectorAll('#admin-modal [data-admin-page]').forEach(p=>{const active=p.dataset.adminPage===tab;p.classList.toggle('active',active);p.hidden=!active;});
+}
+document.querySelectorAll('#admin-modal [data-admin-tab]').forEach(b=>b.addEventListener('click',()=>switchAdminTab(b.dataset.adminTab)));
+
+</script>
 <div id="admin-groups-modal" class="admin-groups-modal" hidden>
  <div class="admin-groups-card">
   <div class="admin-head"><div><h3>👥 Alla grupper</h3><div id="admin-groups-sub" class="admin-small">Gruppnamn och medlemmar</div></div><button id="admin-groups-close" class="settings-close" type="button" aria-label="Stäng">✕</button></div>
@@ -371,9 +526,9 @@ async function openAdminPanel(){
  try{
   if(!adminUnlocked)await adminLogin();
   if(!adminUnlocked)return;
-  $('settings-modal').hidden=true;$('admin-modal').hidden=false;
+  $('settings-modal').hidden=true;$('admin-modal').hidden=false;switchAdminTab('overview');
   await loadGlobalAnnouncement();$('admin-announcement-input').value=currentAnnouncement;
-  await refreshAdminPanel();
+  await refreshAdminPanel();syncAdminDashboardStats();
  }catch(e){alert(e.message)}
 }
 async function fetchAllMessages(filters={}){
