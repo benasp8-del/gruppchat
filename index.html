@@ -76,7 +76,28 @@ input{width:100%;background:var(--surface2);color:var(--text);border:1px solid v
 @media(max-width:760px){.admin-grid{grid-template-columns:1fr}.admin-card{padding:14px}}
 .background-upload,.background-preview,#group-background,#bg-file,#background-file{display:none!important}
 .offline-list{font-size:13px;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}.pinned-bar{flex-shrink:0;padding:8px 12px;background:color-mix(in srgb,var(--group-accent,#6c5ce7) 18%,var(--surface));border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:5px}.pinned-bar[hidden]{display:none!important}.pinned-head{font-size:12px;font-weight:800;color:var(--primary)}.pinned-item{display:flex;align-items:center;gap:8px;min-width:0}.pinned-jump{flex:1;min-width:0;text-align:left;border:0;background:transparent;color:var(--text);font:inherit;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;padding:2px}.pinned-unpin{border:1px solid var(--border);border-radius:7px;background:var(--surface);color:var(--text);padding:3px 7px;cursor:pointer;font-size:12px}.message-pinned-label{font-size:11px;font-weight:700;color:var(--primary);margin-bottom:4px}.msg-action.pin-action{color:var(--primary)}.message.flash-pinned{outline:2px solid var(--primary);outline-offset:3px}.member-count-button{border:0;background:transparent;color:var(--primary);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:0}.members-modal{position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;padding:16px;z-index:80}.members-modal[hidden]{display:none!important}.members-card{width:min(420px,100%);max-height:85vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px}.members-row{display:flex;align-items:center;gap:9px;padding:9px 4px;border-bottom:1px solid var(--border)}.member-role{margin-left:auto;font-size:12px;color:var(--primary);font-weight:700}
-.app-version{display:inline-block;margin-top:8px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.02em}.app-version-header{margin:0 0 0 6px;white-space:nowrap}.header-left{flex-wrap:wrap}@media(max-width:600px){.app-version-header{font-size:10px;padding:2px 5px}}\n.admin-view-stats{margin-top:14px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.admin-view-stats .stat-line{font-size:12px;color:var(--muted);margin:5px 0}.admin-sent-link{border:0;padding:0;background:none;color:var(--accent,#9bbcff);font:inherit;text-decoration:underline;cursor:pointer}.admin-sent-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;max-height:65vh;overflow:auto}.admin-sent-item{border:1px solid var(--border);border-radius:10px;padding:10px;background:var(--surface2)}.admin-sent-time{font-size:11px;color:var(--muted);margin-bottom:6px}\n</style></head>
+.app-version{display:inline-block;margin-top:8px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.02em}.app-version-header{margin:0 0 0 6px;white-space:nowrap}.header-left{flex-wrap:wrap}@media(max-width:600px){.app-version-header{font-size:10px;padding:2px 5px}}\n.admin-view-stats{margin-top:14px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.admin-view-stats .stat-line{font-size:12px;color:var(--muted);margin:5px 0}.admin-sent-link{border:0;padding:0;background:none;color:var(--accent,#9bbcff);font:inherit;text-decoration:underline;cursor:pointer}#admin-sent-modal{z-index:260} .admin-sent-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;max-height:65vh;overflow:auto}.admin-sent-item{border:1px solid var(--border);border-radius:10px;padding:10px;background:var(--surface2)}.admin-sent-time{font-size:11px;color:var(--muted);margin-bottom:6px}\n
+/* Gruppchat 1.1 – polish for activity and sent-message modal */
+.admin-view-stats{padding:15px;border-radius:14px;background:linear-gradient(145deg,var(--surface),var(--surface2));box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.admin-info-title{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:800;margin-bottom:12px;color:var(--text)}
+.admin-view-stats .stat-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;margin:0;border-top:1px solid var(--border);font-size:12px}
+.admin-view-stats .stat-line>b{color:var(--text);font-size:14px}
+.admin-sent-link{display:inline-flex;align-items:center;gap:9px;padding:8px 11px!important;border:1px solid var(--border)!important;border-radius:10px;background:var(--surface)!important;color:var(--text)!important;text-decoration:none!important;font-weight:750!important;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.admin-sent-link:hover{transform:translateY(-1px);border-color:var(--primary)!important;background:var(--surface2)!important}
+.admin-sent-count{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:8px;background:var(--primary);color:white;font-size:12px}
+.admin-info-hint{margin-top:10px;color:var(--muted);font-size:11px;line-height:1.45}
+#admin-sent-modal{position:fixed!important;inset:0!important;z-index:2147483000!important;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(8,12,22,.72);backdrop-filter:blur(5px)}
+#admin-sent-modal[hidden]{display:none!important}
+#admin-sent-modal>.admin-card{width:min(760px,100%)!important;max-height:min(82vh,760px);overflow:hidden;display:flex;flex-direction:column;padding:0!important;border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.38);background:var(--surface)}
+#admin-sent-modal .admin-head{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--border);background:var(--surface2)}
+#admin-sent-modal .admin-head h3{margin:0;font-size:17px;line-height:1.35}
+#admin-sent-modal #admin-sent-close{margin-left:auto;flex:0 0 auto}
+#admin-sent-modal .admin-sent-list{margin:0;padding:16px 20px 20px;max-height:calc(82vh - 70px);overflow:auto}
+#admin-sent-modal .admin-sent-item{padding:13px 14px;border:1px solid var(--border);border-radius:13px;background:var(--surface2);line-height:1.5;overflow-wrap:anywhere}
+#admin-sent-modal .admin-sent-time{font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--muted);margin-bottom:7px}
+@media(max-width:600px){#admin-sent-modal{padding:10px}#admin-sent-modal>.admin-card{max-height:90vh;border-radius:16px}#admin-sent-modal .admin-head{padding:15px}#admin-sent-modal #admin-sent-title{font-size:14px}#admin-sent-modal .admin-sent-list{padding:12px;max-height:calc(90vh - 65px)}}
+
+</style></head>
 </head>
 <body>
 <section id="join-screen" class="screen active">
@@ -553,8 +574,15 @@ async function showAdminSentMessages(){
  if(!username||!roomId)return;
  const room=adminViewer.rooms.find(r=>r.id===roomId);
  $('admin-sent-title').textContent=`Skickade meddelanden · ${username} · ${room?.name||'Grupp'}`;
+ const sentModal=$('admin-sent-modal');
+ if(sentModal.parentElement!==document.body)document.body.appendChild(sentModal);
+ sentModal.style.setProperty('position','fixed','important');
+ sentModal.style.setProperty('inset','0','important');
+ sentModal.style.setProperty('z-index','2147483000','important');
+ sentModal.setAttribute('role','dialog');
+ sentModal.setAttribute('aria-modal','true');
  $('admin-sent-list').innerHTML='<div class="admin-small">Hämtar meddelanden…</div>';
- $('admin-sent-modal').hidden=false;
+ sentModal.hidden=false;
  const {data,error}=await db.from('messages').select('id,username,text,image,created_at,deleted').eq('room_id',roomId).eq('username',username).order('created_at',{ascending:false});
  if(error)throw error;
  const rows=data||[];
@@ -568,8 +596,8 @@ async function loadAdminViewerRoom(roomId){
  const rows=data||[];const own=rows.filter(m=>m.username===adminViewer.username);
  const words=own.reduce((total,m)=>total+String(m.deleted?'':(m.text||'')).trim().split(/\s+/u).filter(Boolean).length,0);
  const stats=$('admin-view-stats');
- stats.innerHTML=`<b>📊 Aktivitet i gruppen</b><div class="stat-line">Ord skrivna: <b>${words.toLocaleString('sv-SE')}</b></div><div class="stat-line">Skickade meddelanden: <button class="admin-sent-link" id="admin-open-sent" type="button">${own.length}</button></div>`;
- $('admin-open-sent').onclick=()=>showAdminSentMessages().catch(e=>alert('Kunde inte hämta meddelanden: '+e.message));
+ stats.innerHTML=`<div class="admin-info-title"><span>📊</span><span>Aktivitet i gruppen</span></div><div class="stat-line"><span>Ord skrivna</span><b>${words.toLocaleString('sv-SE')}</b></div><div class="stat-line"><button class="admin-sent-link" id="admin-open-sent" type="button" aria-label="Visa skickade meddelanden"><span>Visa meddelanden</span><span class="admin-sent-count">${own.length}</span><span aria-hidden="true">↗</span></button></div><div class="admin-info-hint">Öppna personens meddelanden i den valda gruppen.</div>`;
+ $('admin-open-sent').onclick=(event)=>{event.preventDefault();event.stopPropagation();const modal=$('admin-sent-modal');if(modal&&modal.parentElement!==document.body)document.body.appendChild(modal);showAdminSentMessages().catch(e=>{const modal=$('admin-sent-modal'),list=$('admin-sent-list');if(modal){modal.style.setProperty('z-index','2147483000','important');modal.hidden=false;}if(list)list.innerHTML='<div class="admin-small">Kunde inte hämta meddelanden: '+esc(e.message||String(e))+'</div>';});};
  const map={};rows.forEach(m=>map[m.id]=m);const box=$('admin-view-messages');box.innerHTML='';rows.forEach(m=>box.appendChild(renderAdminViewerMessage(m,map)));box.scrollTop=box.scrollHeight;
 }
 $('admin-sent-close').onclick=()=>$('admin-sent-modal').hidden=true;
